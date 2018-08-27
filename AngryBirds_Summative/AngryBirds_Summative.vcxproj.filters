@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="clock.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyboardInput.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderLoader.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="TextLabel.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="XboxControllerInput.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelOne.cpp">
+      <Filter>NotEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>NotEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerCharacter.cpp">
+      <Filter>NotEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="GroundBox.cpp">
+      <Filter>NotEngine</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Camera.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="clock.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyboardInput.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderLoader.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="TextLabel.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="XboxControllerInput.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelOne.h">
+      <Filter>NotEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerCharacter.h">
+      <Filter>NotEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="GroundBox.h">
+      <Filter>NotEngine</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Shaders\FragmentShader.fs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Resources\Shaders\VertexShader.vs">
+      <Filter>Shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{5214eebf-17aa-4ab5-8dff-cc356975e772}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NotEngine">
+      <UniqueIdentifier>{67b44eed-3a39-4d13-be73-b3243faa9c7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{cba8183e-12b7-4b56-91ca-42dfe734c5e9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
