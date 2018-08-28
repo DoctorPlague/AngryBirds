@@ -31,19 +31,19 @@
     <ClCompile Include="TextLabel.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="XboxControllerInput.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
     <ClCompile Include="LevelOne.cpp">
       <Filter>NotEngine</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>NotEngine</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerCharacter.cpp">
+    <ClCompile Include="GroundBox.cpp">
       <Filter>NotEngine</Filter>
     </ClCompile>
-    <ClCompile Include="GroundBox.cpp">
+    <ClCompile Include="AngryBird.cpp">
+      <Filter>NotEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="SlingShot.cpp">
       <Filter>NotEngine</Filter>
     </ClCompile>
   </ItemGroup>
@@ -81,16 +81,16 @@
     <ClInclude Include="Utilities.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="XboxControllerInput.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
     <ClInclude Include="LevelOne.h">
       <Filter>NotEngine</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerCharacter.h">
+    <ClInclude Include="GroundBox.h">
       <Filter>NotEngine</Filter>
     </ClInclude>
-    <ClInclude Include="GroundBox.h">
+    <ClInclude Include="AngryBird.h">
+      <Filter>NotEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="SlingShot.h">
       <Filter>NotEngine</Filter>
     </ClInclude>
   </ItemGroup>
@@ -99,6 +99,12 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="Resources\Shaders\VertexShader.vs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Resources\Shaders\Fragment_DebugShader.fs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Resources\Shaders\Vertex_DebugShader.vs">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>

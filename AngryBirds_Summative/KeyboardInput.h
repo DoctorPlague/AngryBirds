@@ -56,6 +56,7 @@ public:
 	void SetCursor(int _cursorSetting);
 	// Getters
 	glm::vec2 GetMousePos();
+	glm::vec2 GetMouseWorldPos();
 	// Other Functions
 	static void Initialize();
 	static void Update();

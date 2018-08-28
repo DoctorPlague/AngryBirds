@@ -11,9 +11,8 @@
 // Description	:	Implimentation for the Input class
 
 #include "KeyboardInput.h"
-#include "Dependencies\glew\glew.h"
-#include "Dependencies\freeglut\freeglut.h"
-
+#include "Utilities.h"
+#include "Camera.h"
 #include <iostream>
 
 std::shared_ptr<Input> Input::s_pInput;
@@ -234,7 +233,32 @@ void Input::SetCursor(int _cursorSetting)
 //                  
 glm::vec2 Input::GetMousePos()
 {
-	return m_MousePos;
+	// Converts XY to NDC and returns
+	glm::vec2 NDC = glm::vec2();
+	NDC.x = (2.0f * m_MousePos.x) / static_cast<float>(ki_SCREENWIDTH) - 1.0f;
+	NDC.y = 1.0f - (2.0f * m_MousePos.y) / static_cast<float>(ki_SCREENHEIGHT);	
+	return NDC;
+}
+
+glm::vec2 Input::GetMouseWorldPos()
+{
+	//screen pos
+	glm::vec2 normalizedScreenPos = glm::vec2(Input::GetInstance()->GetMousePos().x, Input::GetInstance()->GetMousePos().y);
+
+	//screenpos to Proj Space
+	glm::vec4 clipCoords = glm::vec4(normalizedScreenPos.x, normalizedScreenPos.y, -1.0f, 1.0f);
+
+	//Proj Space to eye space
+	glm::mat4 invProjMat = glm::inverse(Camera::GetInstance()->GetProj());
+	glm::vec4 eyeCoords = invProjMat * clipCoords;
+	eyeCoords = glm::vec4(eyeCoords.x, eyeCoords.y, -1.0f, 0.0f);
+
+	//eyespace to world space
+	glm::mat4 invViewMat = glm::inverse(Camera::GetInstance()->GetView());
+	glm::vec4 rayWorld = invViewMat * eyeCoords;
+	glm::vec3 rayDirection = glm::normalize(glm::vec3(rayWorld));	
+
+	return glm::vec2(rayWorld.x, rayWorld.y);
 }
 
 //Name:			    LprocessNormalKeysDown

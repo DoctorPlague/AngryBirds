@@ -3,30 +3,32 @@
 #include "Utilities.h"
 
 class Sprite;
-class PlayerCharacter :
+class AngryBird :
 	public Entity
 {
 public:
-	PlayerCharacter();
-	~PlayerCharacter();
+	AngryBird();
+	~AngryBird();
 
 	// Virtual Functions
 	void Render();
 	void Update();
+	void Initialize();	
+	glm::vec2 GetPosition() { return glm::vec2(m_body->GetPosition().x, m_body->GetPosition().y); }
+
+	// Non-Virtual Functions
 	void AddVelocity(float _Speed);
 	void AddRotation(float _Angle);
 	void SetPosition(b2Vec2 _position);
 	float GetVibrateRate() { return m_fVibrationRate; };	
-	void Initialize();
+	void SetPicked(bool _bool);
+	bool GetPicked() const;
+	
 
 private:
-	std::shared_ptr<Sprite> m_Sprite;
-	glm::vec3 m_Scale;	
-	glm::vec3 m_RotationAxis;
+	bool m_picked;	
 	float m_fVibrationRate;
 
-	// Physics
-	b2BodyDef m_bodyDef;
-	b2Body* m_body;		
+		
 };
 

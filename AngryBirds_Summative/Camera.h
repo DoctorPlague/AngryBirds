@@ -21,6 +21,7 @@ public:
 	//Getters
 	glm::mat4 GetView();
 	glm::mat4 GetProj();
+	glm::vec3 GetPos();
 	//Setters	
 	void SetProj(int _screenWidth, int _screenHeight);
 	//Other functions

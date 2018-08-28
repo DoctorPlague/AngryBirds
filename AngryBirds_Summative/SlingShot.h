@@ -3,12 +3,11 @@
 #include "Utilities.h"
 
 class Sprite;
-class GroundBox :
-	public Entity
+class SlingShot : public Entity
 {
 public:
-	GroundBox();
-	~GroundBox();
+	SlingShot();
+	~SlingShot();
 
 	// Virtual Functions
 	void Render();
@@ -16,9 +15,10 @@ public:
 	void Initialize();
 	glm::vec2 GetPosition() { return glm::vec2(m_body->GetPosition().x, m_body->GetPosition().y); }
 
-	void SetPosition(b2Vec2 _position);	
+	void SetPosition(b2Vec2 _position);
 	
 
 private:	
+	
 };
 

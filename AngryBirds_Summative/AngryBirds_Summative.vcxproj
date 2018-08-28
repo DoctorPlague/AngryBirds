@@ -143,13 +143,13 @@
     <ClCompile Include="LevelOne.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Physics.cpp" />
-    <ClCompile Include="PlayerCharacter.cpp" />
+    <ClCompile Include="AngryBird.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="ShaderLoader.cpp" />
+    <ClCompile Include="SlingShot.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="TextLabel.cpp" />
-    <ClCompile Include="XboxControllerInput.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
@@ -159,18 +159,20 @@
     <ClInclude Include="KeyboardInput.h" />
     <ClInclude Include="LevelOne.h" />
     <ClInclude Include="Physics.h" />
-    <ClInclude Include="PlayerCharacter.h" />
+    <ClInclude Include="AngryBird.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="ShaderLoader.h" />
+    <ClInclude Include="SlingShot.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="TextLabel.h" />
     <ClInclude Include="Utilities.h" />
-    <ClInclude Include="XboxControllerInput.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shaders\FragmentShader.fs" />
+    <None Include="Resources\Shaders\Fragment_DebugShader.fs" />
     <None Include="Resources\Shaders\VertexShader.vs" />
+    <None Include="Resources\Shaders\Vertex_DebugShader.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
