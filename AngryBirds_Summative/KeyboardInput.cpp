@@ -104,6 +104,7 @@ void Input::Update()
 	glutKeyboardUpFunc(LprocessNormalKeysUp);
 	glutSpecialFunc(LprocessSpecialKeys);
 	glutPassiveMotionFunc(LmouseInput);
+	glutMotionFunc(LmouseInput);
 	glutMouseFunc(LmouseButton);
 
 	//Processing all of the keys
@@ -117,6 +118,15 @@ void Input::Update()
 			KeyState[i] = INPUT_RELEASED;
 		}
 	}
+
+	// Processing mouse buttons
+	for (int i = 0; i < 3; i++)
+	{
+		if (MouseState[i] == INPUT_FIRST_PRESS)
+		{
+			MouseState[i] = INPUT_HOLD;
+		}
+	}
 }
 
 //Name:			    ProcessNormalKeysDown
@@ -127,8 +137,7 @@ void Input::Update()
 //                  
 void Input::ProcessNormalKeysDown(unsigned char _key, int _x, int _y)
 {
-	KeyState[_key] = INPUT_FIRST_PRESS;
-	std::cout << "Key Pressed: " << _key << std::endl;
+	KeyState[_key] = INPUT_FIRST_PRESS;	
 }
 
 //Name:			    ProcessNormalKeysUp
@@ -186,19 +195,12 @@ void Input::MouseButton(int _button, int _state, int _x, int _y)
 	if (_button < 3)
 	{
 		if (_state == GLUT_DOWN)
-		{
-			if (MouseState[_button] == INPUT_FIRST_PRESS)
-			{
-				MouseState[_button] = INPUT_HOLD;
-			}
-			else
-			{
-				MouseState[_button] = INPUT_FIRST_PRESS;
-			}
+		{			
+			MouseState[_button] = INPUT_FIRST_PRESS;			
 		}
 		else if (_state == GLUT_UP)
-		{
-			MouseState[_button] = INPUT_RELEASED;
+		{					
+			MouseState[_button] = INPUT_RELEASED;			
 		}
 	}
 }
@@ -243,7 +245,8 @@ glm::vec2 Input::GetMousePos()
 glm::vec2 Input::GetMouseWorldPos()
 {
 	//screen pos
-	glm::vec2 normalizedScreenPos = glm::vec2(Input::GetInstance()->GetMousePos().x, Input::GetInstance()->GetMousePos().y);
+	glm::vec2 normalizedScreenPos = glm::vec2((2.0f * m_MousePos.x) / static_cast<float>(ki_SCREENWIDTH) - 1.0f,
+									1.0f - (2.0f * m_MousePos.y) / static_cast<float>(ki_SCREENHEIGHT));
 
 	//screenpos to Proj Space
 	glm::vec4 clipCoords = glm::vec4(normalizedScreenPos.x, normalizedScreenPos.y, -1.0f, 1.0f);

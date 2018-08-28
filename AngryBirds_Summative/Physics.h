@@ -22,7 +22,7 @@ public:
 	
 
 private:	
-	b2Vec2 m_gravity = b2Vec2(0.0f, -10.0f);
+	b2Vec2 m_gravity = b2Vec2(0.0f, -9.8f);
 	b2World* m_world = new b2World(m_gravity);		
 	float32 m_timeStep;
 	int32 m_velocityIterations;

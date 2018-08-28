@@ -18,11 +18,13 @@ public:
 
 	// Non-Virtual Functions
 	void AddVelocity(float _Speed);
+	void AddImpulse(glm::vec2 _direction, float _strength);
 	void AddRotation(float _Angle);
 	void SetPosition(b2Vec2 _position);
 	float GetVibrateRate() { return m_fVibrationRate; };	
 	void SetPicked(bool _bool);
 	bool GetPicked() const;
+	void SetLinearVelocity(glm::vec2 _velocity);
 	
 
 private:

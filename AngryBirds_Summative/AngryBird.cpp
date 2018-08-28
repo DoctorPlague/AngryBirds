@@ -9,7 +9,7 @@
 AngryBird::AngryBird()
 {
 	m_Sprite = std::make_shared<Sprite>();	
-	m_Scale = glm::vec3(0.3f, 0.3f, 0.3f);
+	m_Scale = glm::vec3(0.15f, 0.15f, 0.0f);
 	m_RotationAxis = glm::vec3(0.0f, 0.0f, 1.0f);
 	m_fVibrationRate = 0.0f;
 	m_picked = false;	
@@ -21,10 +21,13 @@ AngryBird::AngryBird()
 	m_body = Physics::GetInstance()->CreateBody(m_bodyDef);
 	b2CircleShape dynamicCircle;
 	dynamicCircle.m_p.Set(0.0f, 0.0f);
-	dynamicCircle.m_radius = 0.3f;
+	dynamicCircle.m_radius = 0.15f;
 	fixtureDef.shape = &dynamicCircle;
 	fixtureDef.density = 1.0f;
 	fixtureDef.friction = 0.3f;
+	fixtureDef.restitution = 0.01f;
+	fixtureDef.filter.categoryBits = 0x0002;
+	fixtureDef.filter.maskBits = 0x0002;
 	m_body->CreateFixture(&fixtureDef);
 	m_body->SetUserData(this);
 
@@ -77,8 +80,16 @@ void AngryBird::AddVelocity(float _Speed)
 {
 	m_body->ApplyForceToCenter(
 	b2Vec2(m_body->GetWorldVector(b2Vec2(0, 1)).x * _Speed,
-		   m_body->GetWorldVector(b2Vec2(0, 1)).y * _Speed), 
-		   true);	
+		   m_body->GetWorldVector(b2Vec2(0, 1)).y * _Speed), true);	
+
+	m_fVibrationRate = 3.0f;
+}
+
+void AngryBird::AddImpulse(glm::vec2 _direction, float _strength)
+{
+	m_body->ApplyLinearImpulseToCenter(
+		b2Vec2(_direction.x * _strength,
+			   _direction.y * _strength), true);
 
 	m_fVibrationRate = 3.0f;
 }
@@ -108,6 +119,13 @@ void AngryBird::SetPicked(bool _bool)
 bool AngryBird::GetPicked() const
 {
 	return m_picked;
+}
+
+void AngryBird::SetLinearVelocity(glm::vec2 _velocity)
+{
+	m_body->SetAwake(false);
+	m_body->SetAwake(true);
+	m_body->SetLinearVelocity(b2Vec2(_velocity.x, _velocity.y));
 }
 
 void AngryBird::Initialize()

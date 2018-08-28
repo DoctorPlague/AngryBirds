@@ -150,6 +150,7 @@
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="TextLabel.cpp" />
+    <ClCompile Include="WoodBlock.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
@@ -167,6 +168,7 @@
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="TextLabel.h" />
     <ClInclude Include="Utilities.h" />
+    <ClInclude Include="WoodBlock.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shaders\FragmentShader.fs" />

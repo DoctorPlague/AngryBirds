@@ -8,20 +8,24 @@
 SlingShot::SlingShot()
 {
 	m_Sprite = std::make_shared<Sprite>();
-	m_Scale = glm::vec3(0.15f, 1.5f, 0.0f);
+	m_Scale = glm::vec3(0.08f, 0.75f, 0.0f);
 	m_RotationAxis = glm::vec3(0.0f, 0.0f, 1.0f);
+	m_loaded = false;
 
 	// Physics
 	b2FixtureDef fixtureDef;	
 	m_bodyDef.type = b2_staticBody;
 	m_bodyDef.position.Set(0.0f, 0.0f);
 	m_body = Physics::GetInstance()->CreateBody(m_bodyDef);
-	m_shape.SetAsBox(0.15f, 1.5f);
+	m_shape.SetAsBox(0.08f, 0.75f);
 	fixtureDef.shape = &m_shape;
 	fixtureDef.density = 1.0f;
 	fixtureDef.friction = 0.3f;
+	fixtureDef.filter.categoryBits = 0x0000;
+	fixtureDef.filter.maskBits = 0x0000;
 	m_body->CreateFixture(&fixtureDef);
 	m_body->SetUserData(this);
+	m_body->SetAwake(false);
 }
 
 
@@ -45,6 +49,36 @@ void SlingShot::Update()
 void SlingShot::SetPosition(b2Vec2 _position)
 {
 	m_body->SetTransform(_position, m_body->GetAngle());
+}
+
+bool SlingShot::GetLoaded()
+{
+	return m_loaded;	
+}
+
+void SlingShot::SetLoaded(bool _loaded)
+{
+	m_loaded = _loaded;
+}
+
+glm::vec2 SlingShot::GetDrawOrigin()
+{
+	return m_drawOrigin;
+}
+
+glm::vec2 SlingShot::GetReleasePosition()
+{
+	return m_releasePosition;
+}
+
+void SlingShot::SetDrawOrigin(glm::vec2 _mouseXY)
+{
+	m_drawOrigin = _mouseXY;
+}
+
+void SlingShot::SetReleasePosition(glm::vec2 _mouseXY)
+{
+	m_releasePosition = _mouseXY;
 }
 
 void SlingShot::Initialize()

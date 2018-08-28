@@ -18,8 +18,6 @@ public:
 	void RenderObjects();
 	void ProcessLevel(float _DeltaTick);
 
-	// Mouse world position
-	void UpdateMouseWorldPos();
 	// Mouse Picking
 	bool CheckMousePicking(glm::vec2 _position, float _radius);
 
@@ -27,12 +25,13 @@ public:
 private:	
 	glm::vec2 m_mousePos;	
 	bool m_birdHeld;
+	int m_birdsRemaining;
 
 	// Contains all entities, for rendering and updating purposes
 	std::vector<std::shared_ptr<Entity>> m_EntityVec;	
 
 	// Contains all AngryBirds, for mouse picking etc purposes
-	std::vector<std::shared_ptr<AngryBird>> m_AngryBirdsVec;
+	std::vector<std::shared_ptr<AngryBird>> m_AngryBirdsVec;	
 
 	// Other Entities
 	std::shared_ptr<GroundBox> m_GroundBox;

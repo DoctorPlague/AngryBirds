@@ -6,6 +6,7 @@
 #include "Physics.h"
 #include "GroundBox.h"
 #include "SlingShot.h"
+#include "WoodBlock.h"
 #include "KeyboardInput.h"
 
 LevelOne::LevelOne()
@@ -62,8 +63,34 @@ void LevelOne::InitializeObjects()
 
 	// SlingShot
 	m_SlingShot = std::make_shared<SlingShot>();
-	m_SlingShot->SetPosition(b2Vec2(3.0f, 4.3f));
+	m_SlingShot->SetPosition(b2Vec2(3.0f, 3.55f));
 	m_EntityVec.push_back(m_SlingShot);
+
+	// WoodBlock 0
+	std::shared_ptr<WoodBlock> TempBlock;
+	TempBlock = std::make_shared<WoodBlock>();
+	TempBlock->SetPosition(b2Vec2(11.0f, 3.8f));	
+	TempBlock->SetRotation(ConvertToRadian(90.0f));
+	m_EntityVec.push_back(TempBlock);
+
+	TempBlock = std::make_shared<WoodBlock>();
+	TempBlock->SetPosition(b2Vec2(13.0f, 3.8f));
+	TempBlock->SetRotation(ConvertToRadian(90.0f));
+	m_EntityVec.push_back(TempBlock);
+
+	TempBlock = std::make_shared<WoodBlock>();
+	TempBlock->SetPosition(b2Vec2(12.0f, 4.9f));	
+	m_EntityVec.push_back(TempBlock);
+
+	TempBlock = std::make_shared<WoodBlock>();
+	TempBlock->SetPosition(b2Vec2(12.3f, 6.0f));
+	TempBlock->SetRotation(ConvertToRadian(90.0f));
+	m_EntityVec.push_back(TempBlock);
+
+	TempBlock = std::make_shared<WoodBlock>();
+	TempBlock->SetPosition(b2Vec2(11.7f, 6.0f));
+	TempBlock->SetRotation(ConvertToRadian(90.0f));
+	m_EntityVec.push_back(TempBlock);
 
 	// Iterate through the entity vector and initialize all objects
 	if (!m_EntityVec.empty())
@@ -78,10 +105,7 @@ void LevelOne::InitializeObjects()
 void LevelOne::ProcessLevel(float _DeltaTick) {
 
 	// Process Physics
-	Physics::GetInstance()->Process();			
-
-	//Updating the keyboard input
-	Input::Update();	
+	Physics::GetInstance()->Process();	
 
 	// Update entities
 	if (!m_EntityVec.empty())
@@ -90,75 +114,64 @@ void LevelOne::ProcessLevel(float _DeltaTick) {
 		{
 			it->Update();			
 		}
-	}
+	}	
 
 	// Process AngryBird stuff..
 	if (!m_AngryBirdsVec.empty())
-	{
-		// NOTE: Might want to replace direct transformation with drawing the bird towards the mouse with forces
+	{	
+		// Count the birds avaliable for fire
+		m_birdsRemaining = static_cast<int>(m_AngryBirdsVec.size());
 
-		//// Process Picking up and Dropping
-		// If no bird is held
-		if (m_birdHeld)
+		bool bLoaded = m_SlingShot->GetLoaded();
+		if (bLoaded)
 		{
-			// if left click pressed, cycle through all birds and set them all to not picked up
-			if (Input::GetInstance()->MouseState[0] == INPUT_FIRST_PRESS)
+			// Set the birds position to the slingshot
+			if (m_birdsRemaining > 0)
 			{
-				Input::GetInstance()->MouseState[0] = INPUT_HOLD;
-				m_birdHeld = false;
-
-				// Reset all birds to not picked
-				for (const auto& it : m_AngryBirdsVec)
-				{
-					it->SetPicked(false);
-				}
+				glm::vec2 LoadedBirdPosition = glm::vec2(m_SlingShot->GetPosition().x - 0.4f, m_SlingShot->GetPosition().y + 0.5f);
+				LoadedBirdPosition = glm::mix(LoadedBirdPosition, m_mousePos, 0.7f);
+				// Set the birds position just to the left of the slingshot
+				m_AngryBirdsVec[m_birdsRemaining - 1]->SetPosition(b2Vec2(LoadedBirdPosition.x, LoadedBirdPosition.y));
 			}
-		}
 
-		// Do Mouse picking on the birds
-		float fRadius = 0.15f;		
-		if (Input::GetInstance()->MouseState[0] == INPUT_FIRST_PRESS && !m_birdHeld)
+			// If the mouse is released, launch the bird
+			if (Input::GetInstance()->MouseState[0] == INPUT_RELEASED)
+			{
+				// Get distance between draw origin and release position
+				glm::vec2 ReleasePosition = m_AngryBirdsVec.back()->GetPosition();
+				glm::vec2 DrawOrigin = glm::vec2(m_SlingShot->GetPosition().x - 0.4f, m_SlingShot->GetPosition().y + 0.5f);
+				float fDistance = glm::distance(ReleasePosition, DrawOrigin);
+				glm::vec2 Direction = glm::normalize(DrawOrigin - ReleasePosition);
+
+				// Apply impulse to loaded bird				
+				m_AngryBirdsVec.back()->SetLinearVelocity(Direction * (fDistance * 10.0f));
+
+				// Remove the bird from the bird vec
+				m_AngryBirdsVec.pop_back();
+				m_birdsRemaining--;
+
+				m_SlingShot->SetLoaded(false);
+			}			
+		}
+		else
 		{
-			Input::GetInstance()->MouseState[0] = INPUT_HOLD;
-			for (const auto& it0 : m_AngryBirdsVec)
+			// Check for mouse click
+			if (Input::GetInstance()->MouseState[0] == INPUT_FIRST_PRESS && m_birdsRemaining > 0)
 			{
-				if (CheckMousePicking(it0->GetPosition(), fRadius))
-				{
-					it0->SetPicked(true);
-					m_birdHeld = true;
-				}
+				m_SlingShot->SetLoaded(true);
 			}
-		}
-
-		
+		}			
 	}
-}
 
-void LevelOne::UpdateMouseWorldPos()
-{
-	//screen pos
-	glm::vec2 normalizedScreenPos = glm::vec2(Input::GetInstance()->GetMousePos().x, Input::GetInstance()->GetMousePos().y);
-
-	//screenpos to Proj Space
-	glm::vec4 clipCoords = glm::vec4(normalizedScreenPos.x, normalizedScreenPos.y, -1.0f, 1.0f);
-
-	//Proj Space to eye space
-	glm::mat4 invProjMat = glm::inverse(Camera::GetInstance()->GetProj());
-	glm::vec4 eyeCoords = invProjMat * clipCoords;
-	eyeCoords = glm::vec4(eyeCoords.x, eyeCoords.y, -1.0f, 0.0f);
-
-	//eyespace to world space
-	glm::mat4 invViewMat = glm::inverse(Camera::GetInstance()->GetView());
-	glm::vec4 rayWorld = invViewMat * eyeCoords;
-	glm::vec3 rayDirection = glm::normalize(glm::vec3(rayWorld));	
-
-	m_mousePos = glm::vec2(rayWorld.x, rayWorld.y);
+	// Updating input
+	Input::GetInstance()->Update();
+	
+	// Update mouse position
+	m_mousePos = Input::GetInstance()->GetMouseWorldPos();
 }
 
 bool LevelOne::CheckMousePicking(glm::vec2 _position, float _radius)
 {
-	UpdateMouseWorldPos();
-
 	if (glm::distance(_position, m_mousePos) <= _radius)
 	{
 		return true;

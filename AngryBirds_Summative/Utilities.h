@@ -16,5 +16,8 @@ const float kf_NORMALX = static_cast<float>(ki_SCREENHEIGHT) / static_cast<float
 #include <vector>
 #include <iostream>
 
-
+static float ConvertToRadian(float _degree)
+{
+	return _degree * b2_pi / 180.0f;
+}
 

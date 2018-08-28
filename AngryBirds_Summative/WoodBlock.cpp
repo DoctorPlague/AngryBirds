@@ -1,24 +1,24 @@
-#include "GroundBox.h"
+#include "WoodBlock.h"
 #include "Sprite.h"
 #include "Physics.h"
 #include "Dependencies/glm/gtx/string_cast.hpp"
 #include "Dependencies/glm/gtx/rotate_vector.hpp"
 
 
-GroundBox::GroundBox()
+WoodBlock::WoodBlock()
 {
 	m_Sprite = std::make_shared<Sprite>();
-	m_Scale = glm::vec3(10.0f, 0.5f, 0.0f);
-	m_RotationAxis = glm::vec3(0.0f, 0.0f, 1.0f);	
+	m_Scale = glm::vec3(1.0f, 0.1f, 0.0f);
+	m_RotationAxis = glm::vec3(0.0f, 0.0f, 1.0f);
 
 	// Physics
-	b2FixtureDef fixtureDef;	
-	m_bodyDef.type = b2_staticBody;
+	b2FixtureDef fixtureDef;
+	m_bodyDef.type = b2_dynamicBody;
 	m_bodyDef.position.Set(5.0f, 5.0f);
 	m_body = Physics::GetInstance()->CreateBody(m_bodyDef);
-	m_shape.SetAsBox(10.0f, 0.5f);
+	m_shape.SetAsBox(1.0f, 0.1f);
 	fixtureDef.shape = &m_shape;
-	fixtureDef.density = 1.0f;
+	fixtureDef.density = 0.5f;
 	fixtureDef.friction = 0.3f;
 	fixtureDef.filter.categoryBits = 0x0002;
 	fixtureDef.filter.maskBits = 0x0002;
@@ -27,11 +27,11 @@ GroundBox::GroundBox()
 }
 
 
-GroundBox::~GroundBox()
+WoodBlock::~WoodBlock()
 {
 }
 
-void GroundBox::Render()
+void WoodBlock::Render()
 {
 	m_Sprite->Render(
 		glm::translate(glm::mat4(), glm::vec3(m_body->GetPosition().x, m_body->GetPosition().y, 0.0f)) *
@@ -40,17 +40,21 @@ void GroundBox::Render()
 	);
 }
 
-void GroundBox::Update()
+void WoodBlock::Update()
 {
-
 }
 
-void GroundBox::SetPosition(b2Vec2 _position)
+void WoodBlock::Initialize()
+{
+	m_Sprite->Initialize("Resources/Images/WoodTexture.png");
+}
+
+void WoodBlock::SetPosition(b2Vec2 _position)
 {
 	m_body->SetTransform(_position, m_body->GetAngle());
 }
 
-void GroundBox::Initialize()
+void WoodBlock::SetRotation(float _angle)
 {
-	m_Sprite->Initialize("Resources/Images/GroundTexture.png");
+	m_body->SetTransform(m_body->GetPosition(), _angle);
 }
