@@ -7,6 +7,8 @@
 #include "GroundBox.h"
 #include "SlingShot.h"
 #include "WoodBlock.h"
+#include "GreenPig.h"
+#include "StoneBlock.h"
 #include "KeyboardInput.h"
 
 LevelOne::LevelOne()
@@ -63,34 +65,60 @@ void LevelOne::InitializeObjects()
 
 	// SlingShot
 	m_SlingShot = std::make_shared<SlingShot>();
-	m_SlingShot->SetPosition(b2Vec2(3.0f, 3.55f));
+	m_SlingShot->SetPosition(b2Vec2(3.0f, 3.8f));
 	m_EntityVec.push_back(m_SlingShot);
 
-	// WoodBlock 0
+	// StoneBlocks
+	std::shared_ptr<StoneBlock> TempsStoneBlock;
+	TempsStoneBlock = std::make_shared<StoneBlock>();
+	TempsStoneBlock->SetPosition(b2Vec2(12.0f, 3.8f));
+	TempsStoneBlock->SetRotation(ConvertToRadian(0.0f));
+	m_EntityVec.push_back(TempsStoneBlock);
+
+	TempsStoneBlock = std::make_shared<StoneBlock>();
+	TempsStoneBlock->SetPosition(b2Vec2(10.5f, 3.8f));
+	TempsStoneBlock->SetRotation(ConvertToRadian(90.0f));
+	m_EntityVec.push_back(TempsStoneBlock);
+
+	TempsStoneBlock = std::make_shared<StoneBlock>();
+	TempsStoneBlock->SetPosition(b2Vec2(13.5f, 3.8f));
+	TempsStoneBlock->SetRotation(ConvertToRadian(90.0f));
+	m_EntityVec.push_back(TempsStoneBlock);
+
+	// WoodBlocks
 	std::shared_ptr<WoodBlock> TempBlock;
 	TempBlock = std::make_shared<WoodBlock>();
-	TempBlock->SetPosition(b2Vec2(11.0f, 3.8f));	
+	TempBlock->SetPosition(b2Vec2(11.0f, 5.8f));	
 	TempBlock->SetRotation(ConvertToRadian(90.0f));
 	m_EntityVec.push_back(TempBlock);
 
 	TempBlock = std::make_shared<WoodBlock>();
-	TempBlock->SetPosition(b2Vec2(13.0f, 3.8f));
+	TempBlock->SetPosition(b2Vec2(13.0f, 5.8f));
 	TempBlock->SetRotation(ConvertToRadian(90.0f));
 	m_EntityVec.push_back(TempBlock);
 
 	TempBlock = std::make_shared<WoodBlock>();
-	TempBlock->SetPosition(b2Vec2(12.0f, 4.9f));	
+	TempBlock->SetPosition(b2Vec2(12.0f, 6.9f));	
 	m_EntityVec.push_back(TempBlock);
 
 	TempBlock = std::make_shared<WoodBlock>();
-	TempBlock->SetPosition(b2Vec2(12.3f, 6.0f));
+	TempBlock->SetPosition(b2Vec2(12.3f, 8.0f));
 	TempBlock->SetRotation(ConvertToRadian(90.0f));
 	m_EntityVec.push_back(TempBlock);
 
 	TempBlock = std::make_shared<WoodBlock>();
-	TempBlock->SetPosition(b2Vec2(11.7f, 6.0f));
+	TempBlock->SetPosition(b2Vec2(11.7f, 8.0f));
 	TempBlock->SetRotation(ConvertToRadian(90.0f));
 	m_EntityVec.push_back(TempBlock);
+
+	// GreenPigs
+	std::shared_ptr<GreenPig> TempPig;
+	TempPig = std::make_shared<GreenPig>();
+	TempPig->SetPosition(b2Vec2(12.0f, 4.8f));
+	TempPig->SetRotation(ConvertToRadian(0.0f));
+	m_EntityVec.push_back(TempPig);
+	m_GreenPigsVec.push_back(TempPig);
+
 
 	// Iterate through the entity vector and initialize all objects
 	if (!m_EntityVec.empty())
@@ -128,10 +156,14 @@ void LevelOne::ProcessLevel(float _DeltaTick) {
 			// Set the birds position to the slingshot
 			if (m_birdsRemaining > 0)
 			{
-				glm::vec2 LoadedBirdPosition = glm::vec2(m_SlingShot->GetPosition().x - 0.4f, m_SlingShot->GetPosition().y + 0.5f);
-				LoadedBirdPosition = glm::mix(LoadedBirdPosition, m_mousePos, 0.7f);
+				glm::vec2 LoadedBirdPosition = glm::vec2(m_SlingShot->GetPosition().x, m_SlingShot->GetPosition().y + 1.0f);
+				LoadedBirdPosition = glm::mix(LoadedBirdPosition, m_mousePos, 0.9f);
 				// Set the birds position just to the left of the slingshot
-				m_AngryBirdsVec[m_birdsRemaining - 1]->SetPosition(b2Vec2(LoadedBirdPosition.x, LoadedBirdPosition.y));
+				// Clamp the y value to avoid overlap with ground
+				m_AngryBirdsVec[m_birdsRemaining - 1]->SetPosition(b2Vec2(
+						   glm::clamp(LoadedBirdPosition.x, m_SlingShot->GetPosition().x - 2.0f, m_SlingShot->GetPosition().x),
+						   glm::clamp(LoadedBirdPosition.y, m_GroundBox->GetPosition().y + 0.65f, 9.0f))
+				);
 			}
 
 			// If the mouse is released, launch the bird
@@ -139,12 +171,12 @@ void LevelOne::ProcessLevel(float _DeltaTick) {
 			{
 				// Get distance between draw origin and release position
 				glm::vec2 ReleasePosition = m_AngryBirdsVec.back()->GetPosition();
-				glm::vec2 DrawOrigin = glm::vec2(m_SlingShot->GetPosition().x - 0.4f, m_SlingShot->GetPosition().y + 0.5f);
+				glm::vec2 DrawOrigin = glm::vec2(m_SlingShot->GetPosition().x - 0.4f, m_SlingShot->GetPosition().y + 0.8f);
 				float fDistance = glm::distance(ReleasePosition, DrawOrigin);
 				glm::vec2 Direction = glm::normalize(DrawOrigin - ReleasePosition);
 
 				// Apply impulse to loaded bird				
-				m_AngryBirdsVec.back()->SetLinearVelocity(Direction * (fDistance * 10.0f));
+				m_AngryBirdsVec.back()->SetLinearVelocity(Direction * (fDistance * 15.0f));
 
 				// Remove the bird from the bird vec
 				m_AngryBirdsVec.pop_back();

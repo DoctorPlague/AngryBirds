@@ -8,7 +8,7 @@
 SlingShot::SlingShot()
 {
 	m_Sprite = std::make_shared<Sprite>();
-	m_Scale = glm::vec3(0.08f, 0.75f, 0.0f);
+	m_Scale = glm::vec3(0.08f, 1.00f, 0.0f);
 	m_RotationAxis = glm::vec3(0.0f, 0.0f, 1.0f);
 	m_loaded = false;
 
@@ -17,7 +17,7 @@ SlingShot::SlingShot()
 	m_bodyDef.type = b2_staticBody;
 	m_bodyDef.position.Set(0.0f, 0.0f);
 	m_body = Physics::GetInstance()->CreateBody(m_bodyDef);
-	m_shape.SetAsBox(0.08f, 0.75f);
+	m_shape.SetAsBox(0.08f, 1.00f);
 	fixtureDef.shape = &m_shape;
 	fixtureDef.density = 1.0f;
 	fixtureDef.friction = 0.3f;

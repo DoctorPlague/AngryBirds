@@ -1,6 +1,7 @@
 #pragma once
 #include "Utilities.h"
 
+class GreenPig;
 class SlingShot;
 class Entity;
 class AngryBird;
@@ -32,6 +33,9 @@ private:
 
 	// Contains all AngryBirds, for mouse picking etc purposes
 	std::vector<std::shared_ptr<AngryBird>> m_AngryBirdsVec;	
+
+	// Contains all GreenPigs
+	std::vector<std::shared_ptr<GreenPig>> m_GreenPigsVec;
 
 	// Other Entities
 	std::shared_ptr<GroundBox> m_GroundBox;

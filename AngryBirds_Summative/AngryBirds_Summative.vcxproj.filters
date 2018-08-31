@@ -49,6 +49,8 @@
     <ClCompile Include="WoodBlock.cpp">
       <Filter>NotEngine</Filter>
     </ClCompile>
+    <ClCompile Include="StoneBlock.cpp" />
+    <ClCompile Include="GreenPig.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
@@ -99,6 +101,8 @@
     <ClInclude Include="WoodBlock.h">
       <Filter>NotEngine</Filter>
     </ClInclude>
+    <ClInclude Include="StoneBlock.h" />
+    <ClInclude Include="GreenPig.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shaders\FragmentShader.fs">
