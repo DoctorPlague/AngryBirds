@@ -22,7 +22,7 @@ Physics::Physics()
 	m_timeStep = 1.0f / 120.0f;
 	m_velocityIterations = 8;
 	m_positionIterations = 3;
-	
+	m_world->SetContactListener(&m_contactListenerInstance);
 }
 
 void Physics::Process()

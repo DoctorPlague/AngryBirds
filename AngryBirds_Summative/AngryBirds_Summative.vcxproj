@@ -137,7 +137,9 @@
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="clock.cpp" />
+    <ClCompile Include="DualWoodBlock.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="GlassBlock.cpp" />
     <ClCompile Include="GreenPig.cpp" />
     <ClCompile Include="GroundBox.cpp" />
     <ClCompile Include="KeyboardInput.cpp" />
@@ -145,6 +147,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Physics.cpp" />
     <ClCompile Include="AngryBird.cpp" />
+    <ClCompile Include="PulleyBlock.cpp" />
+    <ClCompile Include="RopeBlock.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="ShaderLoader.cpp" />
     <ClCompile Include="SlingShot.cpp" />
@@ -157,13 +161,18 @@
   <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="clock.h" />
+    <ClInclude Include="ContactListener.h" />
+    <ClInclude Include="DualWoodBlock.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="GlassBlock.h" />
     <ClInclude Include="GreenPig.h" />
     <ClInclude Include="GroundBox.h" />
     <ClInclude Include="KeyboardInput.h" />
     <ClInclude Include="LevelOne.h" />
     <ClInclude Include="Physics.h" />
     <ClInclude Include="AngryBird.h" />
+    <ClInclude Include="PulleyBlock.h" />
+    <ClInclude Include="RopeBlock.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="ShaderLoader.h" />
     <ClInclude Include="SlingShot.h" />

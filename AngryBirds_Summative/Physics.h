@@ -1,5 +1,6 @@
 #pragma once
 #include "Utilities.h"
+#include "ContactListener.h"
 
 class Physics
 {
@@ -22,6 +23,7 @@ public:
 	
 
 private:	
+	ContactListener m_contactListenerInstance;
 	b2Vec2 m_gravity = b2Vec2(0.0f, -8.8f);
 	b2World* m_world = new b2World(m_gravity);		
 	float32 m_timeStep;

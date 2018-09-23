@@ -1,6 +1,7 @@
 #pragma once
 #include "Utilities.h"
 
+class PulleyBlock;
 class GreenPig;
 class SlingShot;
 class Entity;
@@ -38,6 +39,8 @@ private:
 	std::vector<std::shared_ptr<GreenPig>> m_GreenPigsVec;
 
 	// Other Entities
+	std::shared_ptr<PulleyBlock> m_PulleyBlock;
+	std::shared_ptr<AngryBird> m_ThrownBird;
 	std::shared_ptr<GroundBox> m_GroundBox;
 	std::shared_ptr<SlingShot> m_SlingShot;
 	std::shared_ptr<Sprite> m_Background;

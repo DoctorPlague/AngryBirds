@@ -2,6 +2,19 @@
 #include "Utilities.h"
 #include "ShaderLoader.h"
 
+enum EntityType
+{
+	ENTITY_WOODBLOCK,
+	ENTITY_STONEBLOCK,
+	ENTITY_ANGRYBIRD,
+	ENTITY_GREENPIG,
+	ENTITY_SLINGSHOT,
+	ENTITY_GROUNDBOX,
+	ENTITY_GLASSBLOCK,
+	ENTITY_ROPEBLOCK,
+	ENTITY_PULLEYBLOCK
+};
+
 class Sprite;
 class Entity
 {
@@ -11,10 +24,12 @@ public:
 
 	// Pure Virtual Functions
 	virtual void Render() = 0;
-	virtual void Update() = 0; 	
+	virtual void Update(float _DeltaTick) = 0;
 	virtual void Initialize() = 0;
 	virtual glm::vec2 GetPosition() = 0;
 	virtual void DrawDebug();
+	virtual int GetEntityType() = 0;
+	virtual b2Body* GetBody() = 0;
 
 	// Entity Functions
 	

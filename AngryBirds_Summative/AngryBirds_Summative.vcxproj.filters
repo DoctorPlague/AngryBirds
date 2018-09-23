@@ -49,8 +49,24 @@
     <ClCompile Include="WoodBlock.cpp">
       <Filter>NotEngine</Filter>
     </ClCompile>
-    <ClCompile Include="StoneBlock.cpp" />
-    <ClCompile Include="GreenPig.cpp" />
+    <ClCompile Include="GreenPig.cpp">
+      <Filter>NotEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="StoneBlock.cpp">
+      <Filter>NotEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="GlassBlock.cpp">
+      <Filter>NotEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="DualWoodBlock.cpp">
+      <Filter>NotEngine\JointObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="RopeBlock.cpp">
+      <Filter>NotEngine\JointObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="PulleyBlock.cpp">
+      <Filter>NotEngine\JointObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
@@ -101,8 +117,27 @@
     <ClInclude Include="WoodBlock.h">
       <Filter>NotEngine</Filter>
     </ClInclude>
-    <ClInclude Include="StoneBlock.h" />
-    <ClInclude Include="GreenPig.h" />
+    <ClInclude Include="GreenPig.h">
+      <Filter>NotEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="StoneBlock.h">
+      <Filter>NotEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="ContactListener.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GlassBlock.h">
+      <Filter>NotEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="DualWoodBlock.h">
+      <Filter>NotEngine\JointObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="RopeBlock.h">
+      <Filter>NotEngine\JointObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="PulleyBlock.h">
+      <Filter>NotEngine\JointObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shaders\FragmentShader.fs">
@@ -127,6 +162,9 @@
     </Filter>
     <Filter Include="Shaders">
       <UniqueIdentifier>{cba8183e-12b7-4b56-91ca-42dfe734c5e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NotEngine\JointObjects">
+      <UniqueIdentifier>{53b3e924-2a2a-4ca9-8f16-da55224119d8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

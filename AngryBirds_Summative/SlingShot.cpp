@@ -42,7 +42,7 @@ void SlingShot::Render()
 	);
 }
 
-void SlingShot::Update()
+void SlingShot::Update(float _DeltaTick)
 {
 }
 

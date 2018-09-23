@@ -18,7 +18,7 @@ StoneBlock::StoneBlock()
 	m_body = Physics::GetInstance()->CreateBody(m_bodyDef);
 	m_shape.SetAsBox(1.0f, 0.3f);
 	fixtureDef.shape = &m_shape;
-	fixtureDef.density = 1000.5f;
+	fixtureDef.density = 10000.5f;
 	fixtureDef.friction = 0.3f;
 	fixtureDef.filter.categoryBits = 0x0002;
 	fixtureDef.filter.maskBits = 0x0002;
@@ -40,7 +40,7 @@ void StoneBlock::Render()
 	);
 }
 
-void StoneBlock::Update()
+void StoneBlock::Update(float _DeltaTick)
 {
 }
 

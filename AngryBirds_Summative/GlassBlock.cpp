@@ -1,43 +1,38 @@
-#include "GreenPig.h"
+#include "GlassBlock.h"
 #include "Sprite.h"
 #include "Physics.h"
 #include "Dependencies/glm/gtx/string_cast.hpp"
 #include "Dependencies/glm/gtx/rotate_vector.hpp"
 
 
-GreenPig::GreenPig()
+GlassBlock::GlassBlock()
 {
 	m_Sprite = std::make_shared<Sprite>();
-	m_Scale = glm::vec3(0.15f, 0.15f, 0.0f);
-	m_RotationAxis = glm::vec3(0.0f, 0.0f, 1.0f);	
-	m_alive = true;
+	m_Scale = glm::vec3(0.6f, 0.2f, 0.0f);
+	m_RotationAxis = glm::vec3(0.0f, 0.0f, 1.0f);
+	m_bDestroyed = false;
 
-	// Creating and Initializing Body
+	// Physics
 	b2FixtureDef fixtureDef;
 	m_bodyDef.type = b2_dynamicBody;
-	m_bodyDef.position.Set(13.0f, 4.5f);
+	m_bodyDef.position.Set(5.0f, 5.0f);
 	m_body = Physics::GetInstance()->CreateBody(m_bodyDef);
-	b2CircleShape dynamicCircle;
-	dynamicCircle.m_p.Set(0.0f, 0.0f);
-	dynamicCircle.m_radius = 0.15f;
-	fixtureDef.shape = &dynamicCircle;
-	fixtureDef.density = 1.0f;
+	m_shape.SetAsBox(0.6f, 0.2f);
+	fixtureDef.shape = &m_shape;
+	fixtureDef.density = 1000.5f;
 	fixtureDef.friction = 0.3f;
-	fixtureDef.restitution = 0.10f;
 	fixtureDef.filter.categoryBits = 0x0002;
 	fixtureDef.filter.maskBits = 0x0002;
 	m_body->CreateFixture(&fixtureDef);
 	m_body->SetUserData(this);
-
-	m_numContacts = 0;
 }
 
 
-GreenPig::~GreenPig()
+GlassBlock::~GlassBlock()
 {
 }
 
-void GreenPig::Render()
+void GlassBlock::Render()
 {
 	m_Sprite->Render(
 		glm::translate(glm::mat4(), glm::vec3(m_body->GetPosition().x, m_body->GetPosition().y, 0.0f)) *
@@ -46,31 +41,22 @@ void GreenPig::Render()
 	);
 }
 
-void GreenPig::Update(float _DeltaTick)
+void GlassBlock::Update(float _DeltaTick)
 {
 }
 
-void GreenPig::Initialize()
+void GlassBlock::Initialize()
 {
-	m_Sprite->Initialize("Resources/Images/PigTexture.png");
+	m_Sprite->Initialize("Resources/Images/WaterTexture.png");
 }
 
-void GreenPig::SetPosition(b2Vec2 _position)
+void GlassBlock::SetPosition(b2Vec2 _position)
 {
 	m_body->SetTransform(_position, m_body->GetAngle());
 }
 
-void GreenPig::SetRotation(float _angle)
+void GlassBlock::SetRotation(float _angle)
 {
 	m_body->SetTransform(m_body->GetPosition(), _angle);
 }
 
-void GreenPig::SetAlive(bool _bool)
-{
-	m_alive = _bool;
-}
-
-bool GreenPig::GetAlive() const
-{
-	return m_alive;
-}

@@ -29,6 +29,7 @@ WoodBlock::WoodBlock()
 
 WoodBlock::~WoodBlock()
 {
+	Physics::GetInstance()->GetWorld()->DestroyBody(m_body);
 }
 
 void WoodBlock::Render()
@@ -40,7 +41,7 @@ void WoodBlock::Render()
 	);
 }
 
-void WoodBlock::Update()
+void WoodBlock::Update(float _DeltaTick)
 {
 }
 

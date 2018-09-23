@@ -19,7 +19,7 @@ GroundBox::GroundBox()
 	m_shape.SetAsBox(10.0f, 0.5f);
 	fixtureDef.shape = &m_shape;
 	fixtureDef.density = 1.0f;
-	fixtureDef.friction = 0.3f;
+	fixtureDef.friction = 1.3f;
 	fixtureDef.filter.categoryBits = 0x0002;
 	fixtureDef.filter.maskBits = 0x0002;
 	m_body->CreateFixture(&fixtureDef);
@@ -40,7 +40,7 @@ void GroundBox::Render()
 	);
 }
 
-void GroundBox::Update()
+void GroundBox::Update(float _DeltaTick)
 {
 
 }

@@ -1,6 +1,7 @@
 #include "Entity.h"
 #include "Utilities.h"
 #include "Camera.h"
+#include "Physics.h"
 
 
 Entity::Entity()
@@ -9,7 +10,8 @@ Entity::Entity()
 }
 
 Entity::~Entity()
-{
+{	
+	
 }
 
 void Entity::DrawDebug()

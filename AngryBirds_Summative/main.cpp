@@ -25,8 +25,8 @@ int main(int argc, char** argv)
 	SceneManager::GetInstance()->SetCurrentScene(LEVEL1_SCENE);
 	// Initialize the starting scene
 	SceneManager::GetInstance()->InitializeScene(LEVEL1_SCENE);	
-	glClearColor(0.0, 0.0, 0.0, 1.0);		
-
+	glClearColor(0.0, 0.0, 0.0, 1.0);	
+	
 	glutDisplayFunc(Render);
 	glutIdleFunc(Update);
 	glutIgnoreKeyRepeat(1);
@@ -42,7 +42,7 @@ void Render()
 }
 
 void Update()
-{			
+{		
 	SceneManager::GetInstance()->UpdateCurrentScene();
 	glutPostRedisplay();
 }

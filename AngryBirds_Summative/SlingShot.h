@@ -11,9 +11,11 @@ public:
 
 	// Virtual Functions
 	void Render();
-	void Update();
+	void Update(float _DeltaTick);
 	void Initialize();
 	glm::vec2 GetPosition() { return glm::vec2(m_body->GetPosition().x, m_body->GetPosition().y); }
+	int GetEntityType() { return ENTITY_SLINGSHOT; }
+	b2Body* GetBody() { return m_body; }
 
 	// Not Virtual Functions
 	void SetPosition(b2Vec2 _position);
