@@ -43,6 +43,7 @@ protected:
 	b2BodyDef m_bodyDef;
 	b2Body* m_body;
 	b2PolygonShape m_shape;
+	bool m_bBodyDestroyed; // if the body has been destroyed
 
 
 private:

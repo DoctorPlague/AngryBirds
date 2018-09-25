@@ -15,16 +15,14 @@ int main(int argc, char** argv)
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA | GLUT_MULTISAMPLE);
 	glutInitWindowPosition(100, 100);
 	glutInitWindowSize(ki_SCREENWIDTH, ki_SCREENHEIGHT);
-	glutCreateWindow("OpenGL First Window");
-	glEnable(GL_MULTISAMPLE);
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glutCreateWindow("Angry Birds Project - Author: Jasper Lyons");
+	glEnable(GL_MULTISAMPLE);	
 	glewInit();
 		
 	// Set the starting scene
-	SceneManager::GetInstance()->SetCurrentScene(LEVEL1_SCENE);
+	SceneManager::GetInstance()->SetCurrentScene(LEVEL3_SCENE);
 	// Initialize the starting scene
-	SceneManager::GetInstance()->InitializeScene(LEVEL1_SCENE);	
+	SceneManager::GetInstance()->InitializeScene(LEVEL3_SCENE);
 	glClearColor(0.0, 0.0, 0.0, 1.0);	
 	
 	glutDisplayFunc(Render);

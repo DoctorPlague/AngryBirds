@@ -10,8 +10,12 @@ Entity::Entity()
 }
 
 Entity::~Entity()
-{	
-	
+{		
+	if (!m_bBodyDestroyed)
+	{		
+		Physics::GetInstance()->GetWorld()->DestroyBody(m_body);
+		m_bBodyDestroyed = true;
+	}	
 }
 
 void Entity::DrawDebug()

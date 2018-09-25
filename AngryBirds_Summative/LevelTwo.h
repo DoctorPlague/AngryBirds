@@ -9,24 +9,24 @@ class AngryBird;
 class Camera;
 class Sprite;
 class GroundBox;
-class LevelOne : public BaseLevel
+class LevelTwo : public BaseLevel
 {
 public:
-	LevelOne();
-	~LevelOne();
+	LevelTwo();
+	~LevelTwo();
 
 	void InitializeObjects();
 	void RenderObjects();
 	void ProcessLevel(float _DeltaTick);
 	void DestroyLevel();
 
-private:	
-	
+private:
+
 	bool m_birdHeld;
-	int m_birdsRemaining;	
+	int m_birdsRemaining;
 
 	// Contains all AngryBirds, for mouse picking etc purposes
-	std::vector<std::shared_ptr<AngryBird>> m_AngryBirdsVec;	
+	std::vector<std::shared_ptr<AngryBird>> m_AngryBirdsVec;
 
 	// Contains all GreenPigs
 	std::vector<std::shared_ptr<GreenPig>> m_GreenPigsVec;
@@ -34,7 +34,7 @@ private:
 	// Other Entities	
 	std::shared_ptr<AngryBird> m_ThrownBird;
 	std::shared_ptr<GroundBox> m_GroundBox;
-	std::shared_ptr<SlingShot> m_SlingShot;	
+	std::shared_ptr<SlingShot> m_SlingShot;
 
 	//Textlabels
 	std::shared_ptr<TextLabel> m_RestartText;

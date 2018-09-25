@@ -18,18 +18,19 @@ WoodBlock::WoodBlock()
 	m_body = Physics::GetInstance()->CreateBody(m_bodyDef);
 	m_shape.SetAsBox(1.0f, 0.1f);
 	fixtureDef.shape = &m_shape;
-	fixtureDef.density = 0.5f;
+	fixtureDef.density = 1.0f;
 	fixtureDef.friction = 0.3f;
 	fixtureDef.filter.categoryBits = 0x0002;
 	fixtureDef.filter.maskBits = 0x0002;
 	m_body->CreateFixture(&fixtureDef);
 	m_body->SetUserData(this);
+	m_bBodyDestroyed = false;
 }
 
 
 WoodBlock::~WoodBlock()
 {
-	Physics::GetInstance()->GetWorld()->DestroyBody(m_body);
+	
 }
 
 void WoodBlock::Render()

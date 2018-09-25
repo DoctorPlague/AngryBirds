@@ -35,10 +35,10 @@ PulleyBlock::~PulleyBlock()
 	
 }
 
-void PulleyBlock::Update()
+void PulleyBlock::Update(float _deltaTime)
 {
 	// Check and decide movement direction
-	if (m_blockOne->GetPosition().y < 4.0f)
+	if (m_blockOne->GetPosition().y < 3.85f)
 	{
 		m_bMovementDirection = true;
 	}
@@ -52,12 +52,12 @@ void PulleyBlock::Update()
 	{
 	case false:
 	{
-		m_blockOne->GetBody()->SetLinearVelocity(b2Vec2(0.0f, -1.0f));
+		m_blockOne->GetBody()->SetLinearVelocity(b2Vec2(0.0f, -25.0f * _deltaTime));
 		break;
 	}
 	case true:
 	{
-		m_blockOne->GetBody()->SetLinearVelocity(b2Vec2(0.0f, 1.0f));
+		m_blockOne->GetBody()->SetLinearVelocity(b2Vec2(0.0f, 25.0f * _deltaTime));
 		break;
 	}
 	}

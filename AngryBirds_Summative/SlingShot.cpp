@@ -26,6 +26,7 @@ SlingShot::SlingShot()
 	m_body->CreateFixture(&fixtureDef);
 	m_body->SetUserData(this);
 	m_body->SetAwake(false);
+	m_bBodyDestroyed = false;
 }
 
 
@@ -83,5 +84,5 @@ void SlingShot::SetReleasePosition(glm::vec2 _mouseXY)
 
 void SlingShot::Initialize()
 {
-	m_Sprite->Initialize("Resources/Images/WoodTexture.png");
+	m_Sprite->Initialize("Resources/Images/SlingshotTexture.png");
 }

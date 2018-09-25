@@ -135,6 +135,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BaseLevel.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="clock.cpp" />
     <ClCompile Include="DualWoodBlock.cpp" />
@@ -143,7 +144,10 @@
     <ClCompile Include="GreenPig.cpp" />
     <ClCompile Include="GroundBox.cpp" />
     <ClCompile Include="KeyboardInput.cpp" />
+    <ClCompile Include="LevelMenu.cpp" />
     <ClCompile Include="LevelOne.cpp" />
+    <ClCompile Include="LevelThree.cpp" />
+    <ClCompile Include="LevelTwo.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Physics.cpp" />
     <ClCompile Include="AngryBird.cpp" />
@@ -159,6 +163,7 @@
     <ClCompile Include="WoodBlock.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BaseLevel.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="clock.h" />
     <ClInclude Include="ContactListener.h" />
@@ -168,7 +173,10 @@
     <ClInclude Include="GreenPig.h" />
     <ClInclude Include="GroundBox.h" />
     <ClInclude Include="KeyboardInput.h" />
+    <ClInclude Include="LevelMenu.h" />
     <ClInclude Include="LevelOne.h" />
+    <ClInclude Include="LevelThree.h" />
+    <ClInclude Include="LevelTwo.h" />
     <ClInclude Include="Physics.h" />
     <ClInclude Include="AngryBird.h" />
     <ClInclude Include="PulleyBlock.h" />

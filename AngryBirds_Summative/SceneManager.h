@@ -6,11 +6,16 @@
 enum SceneState
 {
 	MENU_SCENE,
-	LEVEL1_SCENE
+	LEVEL1_SCENE,
+	LEVEL2_SCENE,
+	LEVEL3_SCENE
 };
 
 //Forward Declarations
+class LevelThree;
+class LevelTwo;
 class LevelOne;
+class LevelMenu;
 class Input;
 class CClock;
 
@@ -37,6 +42,9 @@ public:
 private:
 	SceneState m_CurrentScene;		
 	std::shared_ptr<LevelOne> m_LevelOneScene;
+	std::shared_ptr<LevelTwo> m_LevelTwoScene;
+	std::shared_ptr<LevelThree> m_LevelThreeScene;
+	std::shared_ptr<LevelMenu> m_LevelMenuScene;
 	//CClock singleton reference
 	std::shared_ptr<CClock> m_Clock;
 };

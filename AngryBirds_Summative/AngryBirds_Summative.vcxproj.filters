@@ -31,31 +31,7 @@
     <ClCompile Include="TextLabel.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="LevelOne.cpp">
-      <Filter>NotEngine</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>NotEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="GroundBox.cpp">
-      <Filter>NotEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="AngryBird.cpp">
-      <Filter>NotEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="SlingShot.cpp">
-      <Filter>NotEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="WoodBlock.cpp">
-      <Filter>NotEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="GreenPig.cpp">
-      <Filter>NotEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="StoneBlock.cpp">
-      <Filter>NotEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="GlassBlock.cpp">
       <Filter>NotEngine</Filter>
     </ClCompile>
     <ClCompile Include="DualWoodBlock.cpp">
@@ -67,6 +43,40 @@
     <ClCompile Include="PulleyBlock.cpp">
       <Filter>NotEngine\JointObjects</Filter>
     </ClCompile>
+    <ClCompile Include="LevelOne.cpp">
+      <Filter>NotEngine\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelMenu.cpp">
+      <Filter>NotEngine\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseLevel.cpp">
+      <Filter>NotEngine\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="AngryBird.cpp">
+      <Filter>NotEngine\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="GlassBlock.cpp">
+      <Filter>NotEngine\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="GreenPig.cpp">
+      <Filter>NotEngine\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="GroundBox.cpp">
+      <Filter>NotEngine\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="SlingShot.cpp">
+      <Filter>NotEngine\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="StoneBlock.cpp">
+      <Filter>NotEngine\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="WoodBlock.cpp">
+      <Filter>NotEngine\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelTwo.cpp">
+      <Filter>NotEngine\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelThree.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
@@ -102,32 +112,8 @@
     <ClInclude Include="Utilities.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="LevelOne.h">
-      <Filter>NotEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="GroundBox.h">
-      <Filter>NotEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="AngryBird.h">
-      <Filter>NotEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="SlingShot.h">
-      <Filter>NotEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="WoodBlock.h">
-      <Filter>NotEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="GreenPig.h">
-      <Filter>NotEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="StoneBlock.h">
-      <Filter>NotEngine</Filter>
-    </ClInclude>
     <ClInclude Include="ContactListener.h">
       <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="GlassBlock.h">
-      <Filter>NotEngine</Filter>
     </ClInclude>
     <ClInclude Include="DualWoodBlock.h">
       <Filter>NotEngine\JointObjects</Filter>
@@ -138,6 +124,40 @@
     <ClInclude Include="PulleyBlock.h">
       <Filter>NotEngine\JointObjects</Filter>
     </ClInclude>
+    <ClInclude Include="LevelOne.h">
+      <Filter>NotEngine\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelMenu.h">
+      <Filter>NotEngine\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseLevel.h">
+      <Filter>NotEngine\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="AngryBird.h">
+      <Filter>NotEngine\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="GlassBlock.h">
+      <Filter>NotEngine\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="GreenPig.h">
+      <Filter>NotEngine\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="GroundBox.h">
+      <Filter>NotEngine\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="SlingShot.h">
+      <Filter>NotEngine\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="StoneBlock.h">
+      <Filter>NotEngine\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="WoodBlock.h">
+      <Filter>NotEngine\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelTwo.h">
+      <Filter>NotEngine\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelThree.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shaders\FragmentShader.fs">
@@ -165,6 +185,12 @@
     </Filter>
     <Filter Include="NotEngine\JointObjects">
       <UniqueIdentifier>{53b3e924-2a2a-4ca9-8f16-da55224119d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NotEngine\Levels">
+      <UniqueIdentifier>{4787d7a8-46fd-4de0-a6aa-5fe93e91614b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NotEngine\Entities">
+      <UniqueIdentifier>{92ea8d18-c140-4a8c-9082-931757daafec}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

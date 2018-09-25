@@ -9,6 +9,8 @@ DualWoodBlock::DualWoodBlock()
 	m_blockOne = std::make_shared<WoodBlock>();
 	m_blockTwo = std::make_shared<WoodBlock>();	
 
+	
+
 	b2RevoluteJointDef jointDef;
 
 	// Define Joint Definition 
@@ -18,6 +20,11 @@ DualWoodBlock::DualWoodBlock()
 	jointDef.localAnchorA.Set(1, 0);
 	jointDef.localAnchorB.Set(-1, 0);
 	jointDef.referenceAngle = 0.0f;
+	jointDef.enableLimit = true;
+	jointDef.lowerAngle = ConvertToRadian(-90.0f);
+	jointDef.upperAngle = ConvertToRadian(-90.0f);
+	
+	
 
 	// Create Joint
 	(b2RevoluteJoint*)Physics::GetInstance()->GetWorld()->CreateJoint(&jointDef);

@@ -1,5 +1,6 @@
 #include "RopeBlock.h"
 #include "WoodBlock.h"
+#include "StoneBlock.h"
 #include "Physics.h"
 #include "Sprite.h"
 #include "Dependencies/glm/gtx/string_cast.hpp"
@@ -28,6 +29,7 @@ RopeBlock::RopeBlock()
 	fixtureDef.filter.maskBits = 0x0002;
 	m_body->CreateFixture(&fixtureDef);
 	m_body->SetUserData(this);
+	m_bBodyDestroyed = false;
 
 	// Define the jointdefs
 	b2RopeJointDef jointDef0;

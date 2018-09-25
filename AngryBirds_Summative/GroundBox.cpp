@@ -24,6 +24,7 @@ GroundBox::GroundBox()
 	fixtureDef.filter.maskBits = 0x0002;
 	m_body->CreateFixture(&fixtureDef);
 	m_body->SetUserData(this);
+	m_bBodyDestroyed = false;
 }
 
 

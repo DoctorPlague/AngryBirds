@@ -9,7 +9,7 @@ public:
 	PulleyBlock(b2Vec2 _position0, b2Vec2 _position1);
 	~PulleyBlock();
 
-	void Update();
+	void Update(float _deltaTime);
 	void SetBlockOnePosition(b2Vec2 _position);
 	void SetBlockTwoPosition(b2Vec2 _position);
 	void SetBlockOneRotation(float _rotation);

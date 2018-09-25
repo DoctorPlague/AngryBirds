@@ -37,6 +37,7 @@ AngryBird::AngryBird()
 	m_body->CreateFixture(&fixtureDef);
 	m_body->SetUserData(this);
 	m_numContacts = 0;
+	m_bBodyDestroyed = false;
 }
 
 AngryBird::AngryBird(BirdType _type)
@@ -71,6 +72,7 @@ AngryBird::AngryBird(BirdType _type)
 	m_body->CreateFixture(&fixtureDef);
 	m_body->SetUserData(this);
 	m_numContacts = 0;
+	m_bBodyDestroyed = false;
 }
 
 
@@ -90,7 +92,7 @@ void AngryBird::Render()
 void AngryBird::Update(float _DeltaTick)
 {	
 	// Check if the bird is within the level
-	if (m_body->GetPosition().x > 17.0f || m_body->GetPosition().x < -17.0f)
+	if (m_body->GetPosition().x > 17.0f || m_body->GetPosition().x < 0.0f)
 	{		
 		m_thrown = false;
 	}
@@ -175,7 +177,7 @@ void AngryBird::SpecialAbility()
 	{
 		if (!m_specialActive)
 		{
-			m_body->GetFixtureList()->SetDensity(1000.0f);
+			m_body->GetFixtureList()->SetDensity(350.0f);
 			m_body->ResetMassData();
 			m_specialActive = true;
 		}		
@@ -185,7 +187,7 @@ void AngryBird::SpecialAbility()
 	{
 		if (!m_specialActive)
 		{
-			m_body->GetFixtureList()->SetRestitution(1.0f);
+			m_body->GetFixtureList()->SetRestitution(0.7f);
 			m_body->ResetMassData();
 			m_specialActive = true;
 		}
