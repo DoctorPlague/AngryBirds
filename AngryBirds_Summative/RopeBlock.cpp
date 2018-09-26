@@ -12,9 +12,9 @@ RopeBlock::RopeBlock()
 	m_blockTwo = std::make_shared<WoodBlock>();
 
 	// Stuff for the block the other blocks hang from
-	m_Sprite = std::make_shared<Sprite>();
-	m_Scale = glm::vec3(1.0f, 0.1f, 0.0f);
-	m_RotationAxis = glm::vec3(0.0f, 0.0f, 1.0f);
+	m_sprite = std::make_shared<Sprite>();
+	m_scale = glm::vec3(1.0f, 0.1f, 0.0f);
+	m_rotationAxis = glm::vec3(0.0f, 0.0f, 1.0f);
 
 	// Physics
 	b2FixtureDef fixtureDef;
@@ -60,10 +60,10 @@ RopeBlock::~RopeBlock()
 
 void RopeBlock::Render()
 {
-	m_Sprite->Render(
+	m_sprite->Render(
 		glm::translate(glm::mat4(), glm::vec3(m_body->GetPosition().x, m_body->GetPosition().y, 0.0f)) *
-		glm::rotate(glm::mat4(), m_body->GetAngle(), m_RotationAxis) *
-		glm::scale(glm::mat4(), m_Scale) // might need to change this later, idk what to do 
+		glm::rotate(glm::mat4(), m_body->GetAngle(), m_rotationAxis) *
+		glm::scale(glm::mat4(), m_scale) // might need to change this later, idk what to do 
 	);
 }
 
@@ -73,7 +73,7 @@ void RopeBlock::Update(float _DeltaTick)
 
 void RopeBlock::Initialize()
 {
-	m_Sprite->Initialize("Resources/Images/ground.png");
+	m_sprite->Initialize("Resources/Images/ground.png");
 }
 
 void RopeBlock::SetBlockOnePosition(b2Vec2 _position)

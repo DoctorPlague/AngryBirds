@@ -17,11 +17,11 @@
 
 LevelThree::LevelThree()
 {
-	m_Background = std::make_shared<Sprite>();
+	m_background = std::make_shared<Sprite>();
 	Camera::GetInstance()->SetProj(ki_SCREENWIDTH, ki_SCREENHEIGHT);
 	Camera::GetInstance()->Update();
 	m_birdHeld = false;
-	m_ThrownBird = nullptr;
+	m_thrownBird = nullptr;
 }
 
 
@@ -32,14 +32,14 @@ LevelThree::~LevelThree()
 void LevelThree::InitializeObjects()
 {
 	// Initialize Scene Background	
-	m_Background->Initialize("Resources/Images/BackgroundTexture.png");
+	m_background->Initialize("Resources/Images/BackgroundTexture.png");
 
 	// Initialize text stuff
-	if (m_RestartText == nullptr)
+	if (m_restartText == nullptr)
 	{
-		m_RestartText = std::make_shared<TextLabel>("RESTART", "Resources/Fonts/arial.ttf", glm::vec2(10.0f, 860.0f)); // Play Text	
-		m_RestartText->SetScale(0.75f);
-		m_TextLabels.push_back(m_RestartText);
+		m_restartText = std::make_shared<TextLabel>("RESTART", "Resources/Fonts/arial.ttf", glm::vec2(10.0f, 860.0f)); // Play Text	
+		m_restartText->SetScale(0.75f);
+		m_textLabels.push_back(m_restartText);
 	}
 
 	// Initialize Other Objects..
@@ -51,86 +51,86 @@ void LevelThree::InitializeObjects()
 	// Bird 0
 	TempBird = std::make_shared<AngryBird>(HEAVY);
 	TempBird->SetPosition(b2Vec2(3.3f, 4.5f));
-	m_EntityVec.push_back(TempBird);
-	m_AngryBirdsVec.push_back(TempBird);
+	m_entityVec.push_back(TempBird);
+	m_angryBirdsVec.push_back(TempBird);
 
 	// Bird 1
 	TempBird = std::make_shared<AngryBird>(DIVER);
 	TempBird->SetPosition(b2Vec2(3.8f, 4.5f));
-	m_EntityVec.push_back(TempBird);
-	m_AngryBirdsVec.push_back(TempBird);
+	m_entityVec.push_back(TempBird);
+	m_angryBirdsVec.push_back(TempBird);
 
 	// Bird 2
 	TempBird = std::make_shared<AngryBird>(BOUNCER);
 	TempBird->SetPosition(b2Vec2(4.3f, 4.5f));
-	m_EntityVec.push_back(TempBird);
-	m_AngryBirdsVec.push_back(TempBird);
+	m_entityVec.push_back(TempBird);
+	m_angryBirdsVec.push_back(TempBird);
 
 	// Bird 3
 	TempBird = std::make_shared<AngryBird>(NORMAL);
 	TempBird->SetPosition(b2Vec2(4.8f, 4.5f));
-	m_EntityVec.push_back(TempBird);
-	m_AngryBirdsVec.push_back(TempBird);
+	m_entityVec.push_back(TempBird);
+	m_angryBirdsVec.push_back(TempBird);
 
 	// GroundBox
-	m_GroundBox = std::make_shared<GroundBox>();
-	m_GroundBox->SetPosition(b2Vec2(8.0f, 2.3f));
-	m_EntityVec.push_back(m_GroundBox);
+	m_groundBox = std::make_shared<GroundBox>();
+	m_groundBox->SetPosition(b2Vec2(8.0f, 2.3f));
+	m_entityVec.push_back(m_groundBox);
 
 	// SlingShot
-	m_SlingShot = std::make_shared<SlingShot>();
-	m_SlingShot->SetPosition(b2Vec2(3.0f, 3.8f));
-	m_EntityVec.push_back(m_SlingShot);
+	m_slingShot = std::make_shared<SlingShot>();
+	m_slingShot->SetPosition(b2Vec2(3.0f, 3.8f));
+	m_entityVec.push_back(m_slingShot);
 
 	// Pulleyblock
-	m_PulleyBlock = std::make_shared<PulleyBlock>(b2Vec2(10.0f, 3.8f), b2Vec2(11.5f, 3.8f));
-	m_PulleyBlock->SetBlockOneRotation(ConvertToRadian(90.0f));
-	m_PulleyBlock->SetBlockTwoRotation(ConvertToRadian(90.0f));
-	m_EntityVec.push_back(m_PulleyBlock->GetBlockOne());
-	m_EntityVec.push_back(m_PulleyBlock->GetBlockTwo());
+	m_pulleyBlock = std::make_shared<PulleyBlock>(b2Vec2(6.0f, 3.8f), b2Vec2(7.5f, 3.8f));
+	m_pulleyBlock->SetBlockOneRotation(ConvertToRadian(90.0f));
+	m_pulleyBlock->SetBlockTwoRotation(ConvertToRadian(90.0f));
+	m_entityVec.push_back(m_pulleyBlock->GetBlockOne());
+	m_entityVec.push_back(m_pulleyBlock->GetBlockTwo());
 
 	// StoneBlocks
 	std::shared_ptr<StoneBlock> TempsStoneBlock;
 	TempsStoneBlock = std::make_shared<StoneBlock>();
 	TempsStoneBlock->SetPosition(b2Vec2(14.0f, 4.1f));
 	TempsStoneBlock->SetRotation(ConvertToRadian(90.0f));
-	m_EntityVec.push_back(TempsStoneBlock);
+	m_entityVec.push_back(TempsStoneBlock);
 
 	TempsStoneBlock = std::make_shared<StoneBlock>();
 	TempsStoneBlock->SetPosition(b2Vec2(14.0f, 6.1f));
 	TempsStoneBlock->SetRotation(ConvertToRadian(0.0f));
-	m_EntityVec.push_back(TempsStoneBlock);
+	m_entityVec.push_back(TempsStoneBlock);
 
 	// WoodBlocks
 	std::shared_ptr<WoodBlock> TempBlock;
 	TempBlock = std::make_shared<WoodBlock>();
 	TempBlock->SetPosition(b2Vec2(13.5f, 7.5f));
 	TempBlock->SetRotation(ConvertToRadian(90.0f));
-	m_EntityVec.push_back(TempBlock);
+	m_entityVec.push_back(TempBlock);
 
 	TempBlock = std::make_shared<WoodBlock>();
 	TempBlock->SetPosition(b2Vec2(14.5f, 7.5f));
 	TempBlock->SetRotation(ConvertToRadian(90.0f));
-	m_EntityVec.push_back(TempBlock);
+	m_entityVec.push_back(TempBlock);
 
 	TempBlock = std::make_shared<WoodBlock>();
 	TempBlock->SetPosition(b2Vec2(14.0f, 9.8f));
-	m_EntityVec.push_back(TempBlock);
+	m_entityVec.push_back(TempBlock);
 
 	// GreenPigs
 	std::shared_ptr<GreenPig> TempPig;
 	TempPig = std::make_shared<GreenPig>();
 	TempPig->SetPosition(b2Vec2(14.0f, 7.8f));
 	TempPig->SetRotation(ConvertToRadian(0.0f));
-	m_EntityVec.push_back(TempPig);
-	m_GreenPigsVec.push_back(TempPig);
+	m_entityVec.push_back(TempPig);
+	m_greenPigsVec.push_back(TempPig);
 
 	// Iterate through the entity vector and initialize all objects
-	if (!m_EntityVec.empty())
+	if (!m_entityVec.empty())
 	{
-		for (unsigned int i = 0; i < m_EntityVec.size(); i++)
+		for (unsigned int i = 0; i < m_entityVec.size(); i++)
 		{
-			m_EntityVec[i]->Initialize();
+			m_entityVec[i]->Initialize();
 		}
 	}
 }
@@ -138,12 +138,12 @@ void LevelThree::InitializeObjects()
 void LevelThree::RenderObjects()
 {
 	// Render Background
-	m_Background->Render(glm::scale(glm::mat4(), glm::vec3(16.0f, 9.0f, 0.0f))); // spawn in the center
+	m_background->Render(glm::scale(glm::mat4(), glm::vec3(16.0f, 9.0f, 0.0f))); // spawn in the center
 
 	// Render Object Vectors (check that the vectors are not empty)
-	if (!m_EntityVec.empty())
+	if (!m_entityVec.empty())
 	{
-		for (const auto& it : m_EntityVec)
+		for (const auto& it : m_entityVec)
 		{
 			it->Render();
 			it->DrawDebug();
@@ -151,9 +151,9 @@ void LevelThree::RenderObjects()
 	}
 
 	// Render text labels
-	if (!m_TextLabels.empty())
+	if (!m_textLabels.empty())
 	{
-		for (const auto& it : m_TextLabels)
+		for (const auto& it : m_textLabels)
 		{
 			it->Render();
 		}
@@ -166,26 +166,26 @@ void LevelThree::ProcessLevel(float _DeltaTick)
 	Physics::GetInstance()->Process();
 
 	// Update entities
-	if (!m_EntityVec.empty())
+	if (!m_entityVec.empty())
 	{
-		for (int i = 0; i < m_EntityVec.size(); i++)
+		for (int i = 0; i < m_entityVec.size(); i++)
 		{
-			int iEntityType = m_EntityVec[i]->GetEntityType();
+			int iEntityType = m_entityVec[i]->GetEntityType();
 			switch (iEntityType)
 			{
 			case ENTITY_GREENPIG:
 			{
 				// If the green pig is not alive, erase it from entity vec
-				if (!std::static_pointer_cast<GreenPig>(m_EntityVec[i])->GetAlive())
+				if (!std::static_pointer_cast<GreenPig>(m_entityVec[i])->GetAlive())
 				{
-					m_EntityVec.erase(m_EntityVec.begin() + i);
+					m_entityVec.erase(m_entityVec.begin() + i);
 
 					// also erase it from the green pigs vec
-					for (int i = 0; i < m_GreenPigsVec.size(); i++)
+					for (int i = 0; i < m_greenPigsVec.size(); i++)
 					{
-						if (!m_GreenPigsVec[i]->GetAlive())
+						if (!m_greenPigsVec[i]->GetAlive())
 						{
-							m_GreenPigsVec.erase(m_GreenPigsVec.begin() + i);
+							m_greenPigsVec.erase(m_greenPigsVec.begin() + i);
 							continue;
 						}
 					}
@@ -196,41 +196,41 @@ void LevelThree::ProcessLevel(float _DeltaTick)
 			case ENTITY_GLASSBLOCK:
 			{
 				// If the glass block has been destroyed, erase it
-				if (std::static_pointer_cast<GlassBlock>(m_EntityVec[i])->GetDestroyed())
+				if (std::static_pointer_cast<GlassBlock>(m_entityVec[i])->GetDestroyed())
 				{
-					m_EntityVec.erase(m_EntityVec.begin() + i);
+					m_entityVec.erase(m_entityVec.begin() + i);
 					continue;
 				}
 				break;
 			}
 			}
 
-			m_EntityVec[i]->Update(_DeltaTick);
+			m_entityVec[i]->Update(_DeltaTick);
 		}
 	}
 
 	// Process Pulley Block
-	m_PulleyBlock->Update(_DeltaTick);
+	m_pulleyBlock->Update(_DeltaTick);
 
 	// Process AngryBird stuff..
-	if (!m_AngryBirdsVec.empty())
+	if (!m_angryBirdsVec.empty())
 	{
 		// Count the birds avaliable for fire
-		m_birdsRemaining = static_cast<int>(m_AngryBirdsVec.size());
+		m_birdsRemaining = static_cast<int>(m_angryBirdsVec.size());
 
-		bool bLoaded = m_SlingShot->GetLoaded();
+		bool bLoaded = m_slingShot->GetLoaded();
 		if (bLoaded)
 		{
 			// Set the birds position to the slingshot
 			if (m_birdsRemaining > 0)
 			{
-				glm::vec2 LoadedBirdPosition = glm::vec2(m_SlingShot->GetPosition().x, m_SlingShot->GetPosition().y + 1.0f);
+				glm::vec2 LoadedBirdPosition = glm::vec2(m_slingShot->GetPosition().x, m_slingShot->GetPosition().y + 1.0f);
 				LoadedBirdPosition = glm::mix(LoadedBirdPosition, m_mousePos, 0.9f);
 				// Set the birds position just to the left of the slingshot
 				// Clamp the y value to avoid overlap with ground
-				m_AngryBirdsVec[m_birdsRemaining - 1]->SetPosition(b2Vec2(
-					glm::clamp(LoadedBirdPosition.x, m_SlingShot->GetPosition().x - 2.0f, m_SlingShot->GetPosition().x),
-					glm::clamp(LoadedBirdPosition.y, m_GroundBox->GetPosition().y + 0.65f, 9.0f))
+				m_angryBirdsVec[m_birdsRemaining - 1]->SetPosition(b2Vec2(
+					glm::clamp(LoadedBirdPosition.x, m_slingShot->GetPosition().x - 2.0f, m_slingShot->GetPosition().x),
+					glm::clamp(LoadedBirdPosition.y, m_groundBox->GetPosition().y + 0.65f, 9.0f))
 				);
 			}
 
@@ -238,73 +238,83 @@ void LevelThree::ProcessLevel(float _DeltaTick)
 			if (Input::GetInstance()->MouseState[0] == INPUT_RELEASED)
 			{
 				// Get distance between draw origin and release position
-				glm::vec2 ReleasePosition = m_AngryBirdsVec.back()->GetPosition();
-				glm::vec2 DrawOrigin = glm::vec2(m_SlingShot->GetPosition().x - 0.4f, m_SlingShot->GetPosition().y + 0.8f);
+				glm::vec2 ReleasePosition = m_angryBirdsVec.back()->GetPosition();
+				glm::vec2 DrawOrigin = glm::vec2(m_slingShot->GetPosition().x - 0.4f, m_slingShot->GetPosition().y + 0.8f);
 				float fDistance = glm::distance(ReleasePosition, DrawOrigin);
 				glm::vec2 Direction = glm::normalize(DrawOrigin - ReleasePosition);
 
 				// Apply impulse to loaded bird	and set thrown true			
-				m_AngryBirdsVec.back()->SetLinearVelocity(Direction * (fDistance * 15.0f));
-				m_AngryBirdsVec.back()->SetThrown(true);
+				m_angryBirdsVec.back()->SetLinearVelocity(Direction * (fDistance * 15.0f));
+				m_angryBirdsVec.back()->SetThrown(true);
 
 				// Set the thrown bird variable to the bird we just threw
-				m_ThrownBird = m_AngryBirdsVec.back();
+				m_thrownBird = m_angryBirdsVec.back();
 
 				// Remove the bird from the bird vec
-				m_AngryBirdsVec.pop_back();
+				m_angryBirdsVec.pop_back();
 				m_birdsRemaining--;
 
 				// Set the slingshot to unloaded
-				m_SlingShot->SetLoaded(false);
+				m_slingShot->SetLoaded(false);
 			}
 		}
 		else
 		{
 			// Check that no bird is ccurrently being thrown
-			if (m_ThrownBird == nullptr)
+			if (m_thrownBird == nullptr)
 			{
 				// Check for mouse click			
 				if (Input::GetInstance()->MouseState[0] == INPUT_FIRST_PRESS && m_birdsRemaining > 0)
 				{
-					m_SlingShot->SetLoaded(true);
+					m_slingShot->SetLoaded(true);
 				}
 			}
 		}
-	}
+	}	
 
 	// Process the thrown bird if one is thrown currently
-	if (m_ThrownBird != nullptr)
+	if (m_thrownBird != nullptr)
 	{
 		// Check for spacebar pressed		
 		if (Input::GetInstance()->KeyState[32] == INPUT_FIRST_PRESS)
 		{
-			m_ThrownBird->SpecialAbility();
+			m_thrownBird->SpecialAbility();
 		}
 
 		// If the bird is dead/not thrown anymore, set it to nullptr
-		if (!m_ThrownBird->GetThrown())
+		if (!m_thrownBird->GetThrown())
 		{
-			m_ThrownBird = nullptr;
+			m_thrownBird = nullptr;
 		}
 	}
 
 	// Check if the level is complete
-	if (m_GreenPigsVec.empty())
+	if (m_greenPigsVec.empty())
 	{
 		// Destroy everything in the scene
 		DestroyLevel();
 
 		// Transition to the next level
-		SceneManager::GetInstance()->SetCurrentScene(MENU_SCENE);
-		SceneManager::GetInstance()->InitializeScene(MENU_SCENE);
+		SceneManager::GetInstance()->SetCurrentScene(LEVELFINISHED_SCENE);
+		SceneManager::GetInstance()->InitializeScene(LEVELFINISHED_SCENE);
+	}
+	else if (m_angryBirdsVec.empty() && m_thrownBird == nullptr && !m_greenPigsVec.empty())
+	{
+		// Angry birds vec empty 
+		// Destroy everything in the scene
+		DestroyLevel();
+
+		// Transition to the next level
+		SceneManager::GetInstance()->SetCurrentScene(LEVELFAILED_SCENE);
+		SceneManager::GetInstance()->InitializeScene(LEVELFAILED_SCENE);
 	}
 
 	// Check for mouse click			
 	if (Input::GetInstance()->MouseState[0] == INPUT_FIRST_PRESS)
 	{
 		bool bRestartCheck = CheckMousePicking(glm::vec2(
-			(m_RestartText->GetPosition().x + 60.0f) / 100.0f,
-			(m_RestartText->GetPosition().y + 24.0f) / 100.0f),
+			(m_restartText->GetPosition().x + 60.0f) / 100.0f,
+			(m_restartText->GetPosition().y + 24.0f) / 100.0f),
 			1.3f);
 
 		if (bRestartCheck)
@@ -327,32 +337,33 @@ void LevelThree::ProcessLevel(float _DeltaTick)
 
 void LevelThree::DestroyLevel()
 {
-	for (int i = 0; i < m_EntityVec.size(); i++)
+	for (int i = 0; i < m_entityVec.size(); i++)
 	{
-		m_EntityVec[i].reset();
-		m_EntityVec.erase(m_EntityVec.begin() + i);
+		m_entityVec[i].reset();
+		m_entityVec.erase(m_entityVec.begin() + i);
 	}
-	for (int i = 0; i < m_AngryBirdsVec.size(); i++)
+	for (int i = 0; i < m_angryBirdsVec.size(); i++)
 	{
-		m_AngryBirdsVec[i].reset();
-		m_AngryBirdsVec.erase(m_AngryBirdsVec.begin() + i);
+		m_angryBirdsVec[i].reset();
+		m_angryBirdsVec.erase(m_angryBirdsVec.begin() + i);
 	}
-	for (int i = 0; i < m_GreenPigsVec.size(); i++)
+	for (int i = 0; i < m_greenPigsVec.size(); i++)
 	{
-		m_GreenPigsVec[i].reset();
-		m_GreenPigsVec.erase(m_GreenPigsVec.begin() + i);
+		m_greenPigsVec[i].reset();
+		m_greenPigsVec.erase(m_greenPigsVec.begin() + i);
 	}
-	for (int i = 0; i < m_TextLabels.size(); i++)
+	for (int i = 0; i < m_textLabels.size(); i++)
 	{
-		m_TextLabels[i].reset();
-		m_TextLabels.erase(m_TextLabels.begin() + i);
+		m_textLabels[i].reset();
+		m_textLabels.erase(m_textLabels.begin() + i);
 	}
 
-	m_EntityVec.clear();
-	m_AngryBirdsVec.clear();
-	m_GreenPigsVec.clear();
-	m_TextLabels.clear();
-	m_GroundBox.reset();
-	m_SlingShot.reset();
-	m_PulleyBlock.reset();
+	m_thrownBird = nullptr;
+	m_entityVec.clear();
+	m_angryBirdsVec.clear();
+	m_greenPigsVec.clear();
+	m_textLabels.clear();
+	m_groundBox.reset();
+	m_slingShot.reset();
+	m_pulleyBlock.reset();
 }

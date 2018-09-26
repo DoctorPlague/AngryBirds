@@ -1,4 +1,4 @@
-#include "LevelMenu.h"
+#include "LevelFailed.h"
 #include "Sprite.h"
 #include "Camera.h"
 #include "Entity.h"
@@ -6,7 +6,9 @@
 #include "TextLabel.h"
 #include "SceneManager.h"
 
-LevelMenu::LevelMenu()
+
+
+LevelFailed::LevelFailed()
 {
 	m_background = std::make_shared<Sprite>();
 	Camera::GetInstance()->SetProj(ki_SCREENWIDTH, ki_SCREENHEIGHT);
@@ -14,21 +16,22 @@ LevelMenu::LevelMenu()
 }
 
 
-LevelMenu::~LevelMenu()
+LevelFailed::~LevelFailed()
 {
-	
 }
 
-void LevelMenu::InitializeObjects()
+void LevelFailed::InitializeObjects()
 {
 	// Initialize Scene Background	
 	m_background->Initialize("Resources/Images/BackgroundTexture.png");
 
 	m_playText = std::make_shared<TextLabel>("PLAY", "Resources/Fonts/arial.ttf", glm::vec2(190.0f, 350.0f)); // Play Text	
 	m_textLabels.push_back(m_playText);
+	m_gameLostText = std::make_shared<TextLabel>("You lost the game, try again!", "Resources/Fonts/arial.ttf", glm::vec2(550.0f, 550.0f)); // Play Text	
+	m_textLabels.push_back(m_gameLostText);
 }
 
-void LevelMenu::RenderObjects()
+void LevelFailed::RenderObjects()
 {
 	// Render Background
 	m_background->Render(glm::scale(glm::mat4(), glm::vec3(16.0f, 9.0f, 0.0f))); // spawn in the center	
@@ -42,7 +45,7 @@ void LevelMenu::RenderObjects()
 	}
 }
 
-void LevelMenu::ProcessLevel(float _DeltaTick)
+void LevelFailed::ProcessLevel(float _DeltaTick)
 {
 	// Check for mouse click			
 	if (Input::GetInstance()->MouseState[0] == INPUT_FIRST_PRESS)
@@ -53,9 +56,9 @@ void LevelMenu::ProcessLevel(float _DeltaTick)
 			1.3f);
 
 		if (bPlayCheck)
-		{						
+		{
 			SceneManager::GetInstance()->SetCurrentScene(LEVEL1_SCENE);
-			SceneManager::GetInstance()->InitializeScene(LEVEL1_SCENE);						
+			SceneManager::GetInstance()->InitializeScene(LEVEL1_SCENE);
 		}
 	}
 
@@ -63,5 +66,5 @@ void LevelMenu::ProcessLevel(float _DeltaTick)
 	Input::GetInstance()->Update();
 
 	// Update mouse position
-	m_mousePos = Input::GetInstance()->GetMouseWorldPos();		 
+	m_mousePos = Input::GetInstance()->GetMouseWorldPos();
 }

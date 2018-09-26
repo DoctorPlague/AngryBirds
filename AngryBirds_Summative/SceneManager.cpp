@@ -3,6 +3,8 @@
 #include "LevelTwo.h"
 #include "LevelThree.h"
 #include "LevelMenu.h"
+#include "LevelFailed.h"
+#include "LevelFinish.h"
 #include "Sprite.h"
 #include "clock.h"
 #include "KeyboardInput.h"
@@ -30,6 +32,8 @@ SceneManager::SceneManager()
 	m_LevelOneScene = std::make_shared<LevelOne>();
 	m_LevelTwoScene = std::make_shared<LevelTwo>();	
 	m_LevelThreeScene = std::make_shared<LevelThree>();
+	m_LevelFailedScene = std::make_shared<LevelFailed>();
+	m_LevelFinishedScene = std::make_shared<LevelFinish>();
 
 	//Initializing the input manager
 	Input::GetInstance()->Initialize();
@@ -69,6 +73,16 @@ void SceneManager::RenderCurrentScene()
 		m_LevelThreeScene->RenderObjects();
 		break;
 	}
+	case LEVELFAILED_SCENE:
+	{
+		m_LevelFailedScene->RenderObjects();
+		break;
+	}
+	case LEVELFINISHED_SCENE:
+	{
+		m_LevelFinishedScene->RenderObjects();
+		break;
+	}
 	}
 }
 
@@ -95,6 +109,16 @@ void SceneManager::UpdateCurrentScene()
 	case LEVEL3_SCENE:
 	{
 		m_LevelThreeScene->ProcessLevel(fDeltaTick);
+		break;
+	}
+	case LEVELFAILED_SCENE:
+	{
+		m_LevelFailedScene->ProcessLevel(fDeltaTick);
+		break;
+	}
+	case LEVELFINISHED_SCENE:
+	{
+		m_LevelFinishedScene->ProcessLevel(fDeltaTick);
 		break;
 	}
 	default:break;
@@ -129,6 +153,16 @@ void SceneManager::InitializeScene(SceneState _scene)
 	case LEVEL3_SCENE:
 	{
 		m_LevelThreeScene->InitializeObjects();
+		break;
+	}
+	case LEVELFAILED_SCENE:
+	{
+		m_LevelFailedScene->InitializeObjects();
+		break;
+	}
+	case LEVELFINISHED_SCENE:
+	{
+		m_LevelFinishedScene->InitializeObjects();
 		break;
 	}
 	}	

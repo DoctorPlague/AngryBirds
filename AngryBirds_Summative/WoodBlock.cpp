@@ -7,9 +7,9 @@
 
 WoodBlock::WoodBlock()
 {
-	m_Sprite = std::make_shared<Sprite>();
-	m_Scale = glm::vec3(1.0f, 0.1f, 0.0f);
-	m_RotationAxis = glm::vec3(0.0f, 0.0f, 1.0f);
+	m_sprite = std::make_shared<Sprite>();
+	m_scale = glm::vec3(1.0f, 0.1f, 0.0f);
+	m_rotationAxis = glm::vec3(0.0f, 0.0f, 1.0f);
 
 	// Physics
 	b2FixtureDef fixtureDef;
@@ -35,10 +35,10 @@ WoodBlock::~WoodBlock()
 
 void WoodBlock::Render()
 {
-	m_Sprite->Render(
+	m_sprite->Render(
 		glm::translate(glm::mat4(), glm::vec3(m_body->GetPosition().x, m_body->GetPosition().y, 0.0f)) *
-		glm::rotate(glm::mat4(), m_body->GetAngle(), m_RotationAxis) *
-		glm::scale(glm::mat4(), m_Scale) // might need to change this later, idk what to do 
+		glm::rotate(glm::mat4(), m_body->GetAngle(), m_rotationAxis) *
+		glm::scale(glm::mat4(), m_scale) // might need to change this later, idk what to do 
 	);
 }
 
@@ -48,7 +48,7 @@ void WoodBlock::Update(float _DeltaTick)
 
 void WoodBlock::Initialize()
 {
-	m_Sprite->Initialize("Resources/Images/WoodTexture.png");
+	m_sprite->Initialize("Resources/Images/WoodTexture.png");
 }
 
 void WoodBlock::SetPosition(b2Vec2 _position)

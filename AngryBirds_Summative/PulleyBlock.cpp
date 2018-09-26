@@ -52,12 +52,12 @@ void PulleyBlock::Update(float _deltaTime)
 	{
 	case false:
 	{
-		m_blockOne->GetBody()->SetLinearVelocity(b2Vec2(0.0f, -25.0f * _deltaTime));
+		m_blockOne->GetBody()->SetLinearVelocity(b2Vec2(0.0f, -50.0f * _deltaTime));
 		break;
 	}
 	case true:
 	{
-		m_blockOne->GetBody()->SetLinearVelocity(b2Vec2(0.0f, 25.0f * _deltaTime));
+		m_blockOne->GetBody()->SetLinearVelocity(b2Vec2(0.0f, 50.0f * _deltaTime));
 		break;
 	}
 	}

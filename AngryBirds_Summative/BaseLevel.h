@@ -1,6 +1,7 @@
 #pragma once
 #include "Utilities.h"
 
+class TextLabel;
 class Entity;
 class Sprite;
 class Camera;
@@ -17,10 +18,11 @@ protected:
 	glm::vec2 m_mousePos;
 
 	// Contains all entities, for rendering and updating purposes
-	std::vector<std::shared_ptr<Entity>> m_EntityVec;
+	std::vector<std::shared_ptr<Entity>> m_entityVec;
+	std::vector<std::shared_ptr<TextLabel>> m_textLabels;
 
 	// Other Entities	
-	std::shared_ptr<Sprite> m_Background;
-	std::shared_ptr<Camera> m_Camera;
+	std::shared_ptr<Sprite> m_background;
+	std::shared_ptr<Camera> m_camera;
 };
 

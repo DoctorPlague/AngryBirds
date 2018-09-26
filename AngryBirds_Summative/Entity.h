@@ -35,9 +35,9 @@ public:
 	
 
 protected:
-	std::shared_ptr<Sprite> m_Sprite;
-	glm::vec3 m_Scale;
-	glm::vec3 m_RotationAxis;
+	std::shared_ptr<Sprite> m_sprite;
+	glm::vec3 m_scale;
+	glm::vec3 m_rotationAxis;
 
 	// Physics Variables
 	b2BodyDef m_bodyDef;

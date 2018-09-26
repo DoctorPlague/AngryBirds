@@ -20,9 +20,9 @@ int main(int argc, char** argv)
 	glewInit();
 		
 	// Set the starting scene
-	SceneManager::GetInstance()->SetCurrentScene(LEVEL3_SCENE);
+	SceneManager::GetInstance()->SetCurrentScene(MENU_SCENE);
 	// Initialize the starting scene
-	SceneManager::GetInstance()->InitializeScene(LEVEL3_SCENE);
+	SceneManager::GetInstance()->InitializeScene(MENU_SCENE);
 	glClearColor(0.0, 0.0, 0.0, 1.0);	
 	
 	glutDisplayFunc(Render);

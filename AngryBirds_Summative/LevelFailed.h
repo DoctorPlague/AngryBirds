@@ -5,11 +5,12 @@ class TextLabel;
 class Entity;
 class Camera;
 class Sprite;
-class LevelMenu : public BaseLevel
+class LevelFailed :
+	public BaseLevel
 {
 public:
-	LevelMenu();
-	~LevelMenu();
+	LevelFailed();
+	~LevelFailed();
 
 	void InitializeObjects();
 	void RenderObjects();
@@ -17,6 +18,6 @@ public:
 
 private:
 	std::shared_ptr<TextLabel> m_playText;
-	
+	std::shared_ptr<TextLabel> m_gameLostText;
 };
 

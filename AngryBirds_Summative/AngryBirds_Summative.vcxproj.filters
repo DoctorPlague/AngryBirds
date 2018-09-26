@@ -76,7 +76,15 @@
     <ClCompile Include="LevelTwo.cpp">
       <Filter>NotEngine\Levels</Filter>
     </ClCompile>
-    <ClCompile Include="LevelThree.cpp" />
+    <ClCompile Include="LevelThree.cpp">
+      <Filter>NotEngine\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelFinish.cpp">
+      <Filter>NotEngine\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelFailed.cpp">
+      <Filter>NotEngine\Levels</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
@@ -157,7 +165,15 @@
     <ClInclude Include="LevelTwo.h">
       <Filter>NotEngine\Levels</Filter>
     </ClInclude>
-    <ClInclude Include="LevelThree.h" />
+    <ClInclude Include="LevelThree.h">
+      <Filter>NotEngine\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelFailed.h">
+      <Filter>NotEngine\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelFinish.h">
+      <Filter>NotEngine\Levels</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shaders\FragmentShader.fs">

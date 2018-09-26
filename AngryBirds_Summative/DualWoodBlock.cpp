@@ -9,10 +9,7 @@ DualWoodBlock::DualWoodBlock()
 	m_blockOne = std::make_shared<WoodBlock>();
 	m_blockTwo = std::make_shared<WoodBlock>();	
 
-	
-
 	b2RevoluteJointDef jointDef;
-
 	// Define Joint Definition 
 	jointDef.bodyA = m_blockOne->GetBody();
 	jointDef.bodyB = m_blockTwo->GetBody();

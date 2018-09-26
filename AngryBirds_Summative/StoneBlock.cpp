@@ -7,9 +7,9 @@
 
 StoneBlock::StoneBlock()
 {
-	m_Sprite = std::make_shared<Sprite>();
-	m_Scale = glm::vec3(1.0f, 0.3f, 0.0f);
-	m_RotationAxis = glm::vec3(0.0f, 0.0f, 1.0f);
+	m_sprite = std::make_shared<Sprite>();
+	m_scale = glm::vec3(1.0f, 0.3f, 0.0f);
+	m_rotationAxis = glm::vec3(0.0f, 0.0f, 1.0f);
 
 	// Physics
 	b2FixtureDef fixtureDef;
@@ -34,10 +34,10 @@ StoneBlock::~StoneBlock()
 
 void StoneBlock::Render()
 {
-	m_Sprite->Render(
+	m_sprite->Render(
 		glm::translate(glm::mat4(), glm::vec3(m_body->GetPosition().x, m_body->GetPosition().y, 0.0f)) *
-		glm::rotate(glm::mat4(), m_body->GetAngle(), m_RotationAxis) *
-		glm::scale(glm::mat4(), m_Scale) // might need to change this later, idk what to do 
+		glm::rotate(glm::mat4(), m_body->GetAngle(), m_rotationAxis) *
+		glm::scale(glm::mat4(), m_scale) // might need to change this later, idk what to do 
 	);
 }
 
@@ -47,7 +47,7 @@ void StoneBlock::Update(float _DeltaTick)
 
 void StoneBlock::Initialize()
 {
-	m_Sprite->Initialize("Resources/Images/scanline texture.png");
+	m_sprite->Initialize("Resources/Images/scanline texture.png");
 }
 
 void StoneBlock::SetPosition(b2Vec2 _position)

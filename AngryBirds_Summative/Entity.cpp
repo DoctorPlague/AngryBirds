@@ -79,7 +79,7 @@ void Entity::DrawDebug()
 	// Pass mvp to shader
 	glm::mat4 Model = 
 		glm::translate(glm::mat4(), glm::vec3(m_body->GetPosition().x, m_body->GetPosition().y, 0.0f)) *
-		glm::rotate(glm::mat4(), m_body->GetAngle(), m_RotationAxis); 
+		glm::rotate(glm::mat4(), m_body->GetAngle(), m_rotationAxis); 
 
 
 	glm::mat4 MVP = Camera::GetInstance()->GetProj() * Camera::GetInstance()->GetView() * Model;

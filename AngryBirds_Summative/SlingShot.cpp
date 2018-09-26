@@ -7,9 +7,9 @@
 
 SlingShot::SlingShot()
 {
-	m_Sprite = std::make_shared<Sprite>();
-	m_Scale = glm::vec3(0.08f, 1.00f, 0.0f);
-	m_RotationAxis = glm::vec3(0.0f, 0.0f, 1.0f);
+	m_sprite = std::make_shared<Sprite>();
+	m_scale = glm::vec3(0.08f, 1.00f, 0.0f);
+	m_rotationAxis = glm::vec3(0.0f, 0.0f, 1.0f);
 	m_loaded = false;
 
 	// Physics
@@ -36,10 +36,10 @@ SlingShot::~SlingShot()
 
 void SlingShot::Render()
 {
-	m_Sprite->Render(
+	m_sprite->Render(
 		glm::translate(glm::mat4(), glm::vec3(m_body->GetPosition().x, m_body->GetPosition().y, 0.0f)) *
-		glm::rotate(glm::mat4(), m_body->GetAngle(), m_RotationAxis) *
-		glm::scale(glm::mat4(), m_Scale) // might need to change this later, idk what to do 
+		glm::rotate(glm::mat4(), m_body->GetAngle(), m_rotationAxis) *
+		glm::scale(glm::mat4(), m_scale) // might need to change this later, idk what to do 
 	);
 }
 
@@ -84,5 +84,5 @@ void SlingShot::SetReleasePosition(glm::vec2 _mouseXY)
 
 void SlingShot::Initialize()
 {
-	m_Sprite->Initialize("Resources/Images/SlingshotTexture.png");
+	m_sprite->Initialize("Resources/Images/SlingshotTexture.png");
 }

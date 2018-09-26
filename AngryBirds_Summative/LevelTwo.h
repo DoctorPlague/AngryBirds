@@ -26,18 +26,17 @@ private:
 	int m_birdsRemaining;
 
 	// Contains all AngryBirds, for mouse picking etc purposes
-	std::vector<std::shared_ptr<AngryBird>> m_AngryBirdsVec;
+	std::vector<std::shared_ptr<AngryBird>> m_angryBirdsVec;
 
 	// Contains all GreenPigs
-	std::vector<std::shared_ptr<GreenPig>> m_GreenPigsVec;
+	std::vector<std::shared_ptr<GreenPig>> m_greenPigsVec;
 
 	// Other Entities	
-	std::shared_ptr<AngryBird> m_ThrownBird;
-	std::shared_ptr<GroundBox> m_GroundBox;
-	std::shared_ptr<SlingShot> m_SlingShot;
+	std::shared_ptr<AngryBird> m_thrownBird;
+	std::shared_ptr<GroundBox> m_groundBox;
+	std::shared_ptr<SlingShot> m_slingShot;
 
 	//Textlabels
-	std::shared_ptr<TextLabel> m_RestartText;
-	std::vector<std::shared_ptr<TextLabel>> m_TextLabels;
+	std::shared_ptr<TextLabel> m_restartText;
 };
 
