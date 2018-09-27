@@ -7,8 +7,8 @@
 //
 // Author		:	Jasper Lyons
 // Email		:	Jasper.Lyo7552@mediadesign.school.nz
-// File Name	:	Input.h
-// Description	:	Header file defining the Input class
+// File Name	:	KeyboardInput.h
+// Description	:	Header file defining the KeyboardInput class
 
 #pragma once
 #include "Dependencies\glm\glm.hpp"
@@ -69,6 +69,6 @@ public:
 	void MouseInput(int _x, int _y);
 
 private:
-	glm::vec2 m_MousePos;
+	glm::vec2 m_mousePos;
 };
 

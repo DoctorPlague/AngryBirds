@@ -1,3 +1,15 @@
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2005 - 2018 Media Design School
+//
+// Author		:	Jasper Lyons
+// Email		:	Jasper.Lyo7552@mediadesign.school.nz
+// File Name	:	Camera.cpp
+// Description	:	Camera c++ file
+
 #include "Camera.h"
 
 std::shared_ptr<Camera> Camera::s_pCamera;

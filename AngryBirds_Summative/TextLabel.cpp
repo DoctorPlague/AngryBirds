@@ -79,7 +79,7 @@ TextLabel::TextLabel(std::string newText, std::string newFont, glm::vec2 pos)
 			glm::ivec2(face->glyph->bitmap_left, face->glyph->bitmap_top),
 			(GLuint)face->glyph->advance.x
 		};
-		Characters.insert(std::pair<GLchar, Character>(c, character));
+		characters.insert(std::pair<GLchar, Character>(c, character));
 	}
 	glBindTexture(GL_TEXTURE_2D, 0);
 
@@ -104,7 +104,7 @@ TextLabel::TextLabel(std::string newText, std::string newFont, glm::vec2 pos)
 
 TextLabel::~TextLabel()
 {
-	Characters.clear();
+	characters.clear();
 }
 
 //Name:			    Render
@@ -131,7 +131,7 @@ void TextLabel::Render()
 	// Iterate through the Characters
 	for (std::string::const_iterator c = text.begin(); c != text.end(); c++)
 	{
-		Character ch = Characters[*c];
+		Character ch = characters[*c];
 
 		GLfloat xpos = textPos.x + ch.Bearing.x * scale;
 		GLfloat ypos = textPos.y - (ch.Size.y - ch.Bearing.y) * scale;

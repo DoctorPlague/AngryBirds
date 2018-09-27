@@ -1,3 +1,15 @@
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2005 - 2018 Media Design School
+//
+// Author		:	Jasper Lyons
+// Email		:	Jasper.Lyo7552@mediadesign.school.nz
+// File Name	:	Sprite.cpp
+// Description	:	Sprite c++ file
+
 #include "Sprite.h"
 #include "Camera.h"
 #include <assert.h>
@@ -23,15 +35,7 @@ void Sprite::Initialize(const char * _TextureFilepath)
 		1.0f, -1.0f, 0.0f,		1.0f, 1.0f, 0.0f,		1.0f, 1.0f, // Bottom Right
 		-1.0f, -1.0f, 0.0f,		0.0f, 0.0f, 1.0f,		0.0f, 1.0f, // Bottom Left
 	};
-
-	//GLfloat m_vertices[32] = {
-	//	// Positions					    // Colors					// Tex Coords
-	//	-1.0f, 1.0f, 0.0f,		0.0f, 1.0f, 0.0f,		0.0f, 0.0f, // Top Left
-	//	1.0f, 1.0f, 0.0f,		1.0f, 0.0f, 0.0f,		1.0f, 0.0f, // Top Right
-	//	1.0f, -1.0f, 0.0f,		1.0f, 1.0f, 0.0f,		1.0f, 1.0f, // Bottom Right
-	//	-1.0f, -1.0f, 0.0f,		0.0f, 0.0f, 1.0f,		0.0f, 1.0f, // Bottom Left
-	//};
-
+	
 	GLuint indices[] = {
 		0, 1, 2, // First Triangle
 		0, 2, 3 // Second Triangle

@@ -1,3 +1,15 @@
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2005 - 2018 Media Design School
+//
+// Author		:	Jasper Lyons
+// Email		:	Jasper.Lyo7552@mediadesign.school.nz
+// File Name	:	PulleyBlock.h
+// Description	:	PulleyBlock header file
+
 #pragma once
 #include "Utilities.h"
 #include "Entity.h"
@@ -18,8 +30,9 @@ public:
 	std::shared_ptr<StoneBlock> GetBlockOne();
 	std::shared_ptr<StoneBlock> GetBlockTwo();
 
-private:
-	bool m_bMovementDirection;
+private:	
+	bool m_bMovementDirection;	
+	// Two blocks used in joint
 	std::shared_ptr<StoneBlock> m_blockOne;
 	std::shared_ptr<StoneBlock> m_blockTwo;
 };

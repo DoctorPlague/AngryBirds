@@ -1,3 +1,15 @@
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2005 - 2018 Media Design School
+//
+// Author		:	Jasper Lyons
+// Email		:	Jasper.Lyo7552@mediadesign.school.nz
+// File Name	:	Physics.cpp
+// Description	:	Physics c++ file
+
 #include "Physics.h"
 
 std::shared_ptr<Physics> Physics::s_pPhysics;

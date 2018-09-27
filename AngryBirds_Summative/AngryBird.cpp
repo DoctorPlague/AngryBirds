@@ -1,8 +1,18 @@
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2005 - 2018 Media Design School
+//
+// Author		:	Jasper Lyons
+// Email		:	Jasper.Lyo7552@mediadesign.school.nz
+// File Name	:	AngryBird.cpp
+// Description	:	AngryBird c++ file
+
 #include "AngryBird.h"
 #include "Sprite.h"
 #include "Physics.h"
-#include "Dependencies/glm/gtx/string_cast.hpp"
-#include "Dependencies/glm/gtx/rotate_vector.hpp"
 #include "KeyboardInput.h"
 
 
@@ -175,6 +185,7 @@ void AngryBird::SpecialAbility()
 	}
 	case HEAVY:
 	{
+		// Increase bird density
 		if (!m_specialActive)
 		{
 			m_body->GetFixtureList()->SetDensity(350.0f);
@@ -185,6 +196,7 @@ void AngryBird::SpecialAbility()
 	}
 	case BOUNCER:
 	{
+		// Increase bird restitution 
 		if (!m_specialActive)
 		{
 			m_body->GetFixtureList()->SetRestitution(0.7f);
@@ -199,6 +211,7 @@ void AngryBird::SpecialAbility()
 /*If the bird has less than a specified amount of linear and angular velocity, we consider it dead*/
 void AngryBird::CheckBirdAlive()
 {
+	// Check how little the bird is moving
 	if (m_body->GetLinearVelocity().Length() < 0.2f
 		&& m_body->GetAngularVelocity() < 0.6f)
 	{

@@ -1,3 +1,15 @@
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2005 - 2018 Media Design School
+//
+// Author		:	Jasper Lyons
+// Email		:	Jasper.Lyo7552@mediadesign.school.nz
+// File Name	:	LevelThree.cpp
+// Description	:	LevelThree c++ file
+
 #include "LevelThree.h"
 #include "Sprite.h"
 #include "Camera.h"

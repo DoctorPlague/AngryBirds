@@ -1,3 +1,15 @@
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2005 - 2018 Media Design School
+//
+// Author		:	Jasper Lyons
+// Email		:	Jasper.Lyo7552@mediadesign.school.nz
+// File Name	:	RopeBlock.h
+// Description	:	RopeBlock header file
+
 #pragma once
 #include "Utilities.h"
 #include "Entity.h"
@@ -29,6 +41,7 @@ public:
 
 
 private:
+	// Two blocks used by joint
 	std::shared_ptr<WoodBlock> m_blockOne;
 	std::shared_ptr<WoodBlock> m_blockTwo;	
 };

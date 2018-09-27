@@ -1,3 +1,15 @@
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2005 - 2018 Media Design School
+//
+// Author		:	Jasper Lyons
+// Email		:	Jasper.Lyo7552@mediadesign.school.nz
+// File Name	:	ContactListener.h
+// Description	:	Collision/Contact listener file
+
 #pragma once
 #include "Utilities.h"
 #include "AngryBird.h"

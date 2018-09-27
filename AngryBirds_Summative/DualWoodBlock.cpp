@@ -1,3 +1,15 @@
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2005 - 2018 Media Design School
+//
+// Author		:	Jasper Lyons
+// Email		:	Jasper.Lyo7552@mediadesign.school.nz
+// File Name	:	DualWoodBlock.cpp
+// Description	:	DualWoodBlock c++ file
+
 #include "DualWoodBlock.h"
 #include "WoodBlock.h"
 #include "Physics.h"

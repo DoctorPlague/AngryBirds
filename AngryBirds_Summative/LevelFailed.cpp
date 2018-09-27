@@ -1,3 +1,15 @@
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2005 - 2018 Media Design School
+//
+// Author		:	Jasper Lyons
+// Email		:	Jasper.Lyo7552@mediadesign.school.nz
+// File Name	:	LevelFailed.cpp
+// Description	:	LevelFailed c++ file
+
 #include "LevelFailed.h"
 #include "Sprite.h"
 #include "Camera.h"
@@ -5,8 +17,6 @@
 #include "KeyboardInput.h"
 #include "TextLabel.h"
 #include "SceneManager.h"
-
-
 
 LevelFailed::LevelFailed()
 {

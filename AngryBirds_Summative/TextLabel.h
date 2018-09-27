@@ -57,6 +57,6 @@ private:
 	glm::vec2 position;
 
 	GLuint VAO, VBO, program;
-	std::map<GLchar, Character> Characters;
+	std::map<GLchar, Character> characters;
 	ShaderLoader shaderLoader;
 };

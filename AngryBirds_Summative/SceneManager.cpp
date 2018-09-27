@@ -1,3 +1,15 @@
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2005 - 2018 Media Design School
+//
+// Author		:	Jasper Lyons
+// Email		:	Jasper.Lyo7552@mediadesign.school.nz
+// File Name	:	SceneManager.cpp
+// Description	:	SceneManager c++ file
+
 #include "SceneManager.h"
 #include "LevelOne.h"
 #include "LevelTwo.h"
@@ -28,17 +40,17 @@ void SceneManager::DestroyInstance()
 
 SceneManager::SceneManager()
 {
-	m_LevelMenuScene = std::make_shared<LevelMenu>();
-	m_LevelOneScene = std::make_shared<LevelOne>();
-	m_LevelTwoScene = std::make_shared<LevelTwo>();	
-	m_LevelThreeScene = std::make_shared<LevelThree>();
-	m_LevelFailedScene = std::make_shared<LevelFailed>();
-	m_LevelFinishedScene = std::make_shared<LevelFinish>();
+	m_levelMenuScene = std::make_shared<LevelMenu>();
+	m_levelOneScene = std::make_shared<LevelOne>();
+	m_levelTwoScene = std::make_shared<LevelTwo>();	
+	m_levelThreeScene = std::make_shared<LevelThree>();
+	m_levelFailedScene = std::make_shared<LevelFailed>();
+	m_levelFinishedScene = std::make_shared<LevelFinish>();
 
 	//Initializing the input manager
 	Input::GetInstance()->Initialize();
-	m_Clock = CClock::GetInstance();
-	m_Clock->Initialise();
+	m_clock = CClock::GetInstance();
+	m_clock->Initialise();
 }
 
 SceneManager::~SceneManager()
@@ -51,36 +63,36 @@ void SceneManager::RenderCurrentScene()
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	switch (m_CurrentScene)
+	switch (m_currentScene)
 	{
 	case MENU_SCENE:
 	{
-		m_LevelMenuScene->RenderObjects();
+		m_levelMenuScene->RenderObjects();
 		break;
 	}
 	case LEVEL1_SCENE:
 	{
-		m_LevelOneScene->RenderObjects();
+		m_levelOneScene->RenderObjects();
 		break;
 	}
 	case LEVEL2_SCENE:
 	{
-		m_LevelTwoScene->RenderObjects();
+		m_levelTwoScene->RenderObjects();
 		break;
 	}
 	case LEVEL3_SCENE:
 	{
-		m_LevelThreeScene->RenderObjects();
+		m_levelThreeScene->RenderObjects();
 		break;
 	}
 	case LEVELFAILED_SCENE:
 	{
-		m_LevelFailedScene->RenderObjects();
+		m_levelFailedScene->RenderObjects();
 		break;
 	}
 	case LEVELFINISHED_SCENE:
 	{
-		m_LevelFinishedScene->RenderObjects();
+		m_levelFinishedScene->RenderObjects();
 		break;
 	}
 	}
@@ -88,37 +100,37 @@ void SceneManager::RenderCurrentScene()
 
 void SceneManager::UpdateCurrentScene()
 {
-	m_Clock->Process();
-	float fDeltaTick = m_Clock->GetDeltaTick() / 1000.0f;
-	switch (m_CurrentScene) {
+	m_clock->Process();
+	float fDeltaTick = m_clock->GetDeltaTick() / 1000.0f;
+	switch (m_currentScene) {
 	case MENU_SCENE:
 	{
-		m_LevelMenuScene->ProcessLevel(fDeltaTick);
+		m_levelMenuScene->ProcessLevel(fDeltaTick);
 		break;
 	}
 	case LEVEL1_SCENE: 
 	{
-		m_LevelOneScene->ProcessLevel(fDeltaTick);
+		m_levelOneScene->ProcessLevel(fDeltaTick);
 		break;
 	}
 	case LEVEL2_SCENE:
 	{
-		m_LevelTwoScene->ProcessLevel(fDeltaTick);
+		m_levelTwoScene->ProcessLevel(fDeltaTick);
 		break;
 	}
 	case LEVEL3_SCENE:
 	{
-		m_LevelThreeScene->ProcessLevel(fDeltaTick);
+		m_levelThreeScene->ProcessLevel(fDeltaTick);
 		break;
 	}
 	case LEVELFAILED_SCENE:
 	{
-		m_LevelFailedScene->ProcessLevel(fDeltaTick);
+		m_levelFailedScene->ProcessLevel(fDeltaTick);
 		break;
 	}
 	case LEVELFINISHED_SCENE:
 	{
-		m_LevelFinishedScene->ProcessLevel(fDeltaTick);
+		m_levelFinishedScene->ProcessLevel(fDeltaTick);
 		break;
 	}
 	default:break;
@@ -127,7 +139,7 @@ void SceneManager::UpdateCurrentScene()
 
 void SceneManager::SetCurrentScene(SceneState _scene)
 {
-	m_CurrentScene = _scene;
+	m_currentScene = _scene;
 }
 
 void SceneManager::InitializeScene(SceneState _scene)
@@ -137,32 +149,32 @@ void SceneManager::InitializeScene(SceneState _scene)
 	{
 	case MENU_SCENE:
 	{
-		m_LevelMenuScene->InitializeObjects();
+		m_levelMenuScene->InitializeObjects();
 		break;
 	}
 	case LEVEL1_SCENE:
 	{
-		m_LevelOneScene->InitializeObjects();
+		m_levelOneScene->InitializeObjects();
 		break;
 	}
 	case LEVEL2_SCENE:
 	{
-		m_LevelTwoScene->InitializeObjects();
+		m_levelTwoScene->InitializeObjects();
 		break;
 	}
 	case LEVEL3_SCENE:
 	{
-		m_LevelThreeScene->InitializeObjects();
+		m_levelThreeScene->InitializeObjects();
 		break;
 	}
 	case LEVELFAILED_SCENE:
 	{
-		m_LevelFailedScene->InitializeObjects();
+		m_levelFailedScene->InitializeObjects();
 		break;
 	}
 	case LEVELFINISHED_SCENE:
 	{
-		m_LevelFinishedScene->InitializeObjects();
+		m_levelFinishedScene->InitializeObjects();
 		break;
 	}
 	}	

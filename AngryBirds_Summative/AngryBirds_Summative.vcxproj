@@ -158,7 +158,6 @@
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="ShaderLoader.cpp" />
     <ClCompile Include="SlingShot.cpp" />
-    <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="StoneBlock.cpp" />
     <ClCompile Include="TextLabel.cpp" />
@@ -188,7 +187,6 @@
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="ShaderLoader.h" />
     <ClInclude Include="SlingShot.h" />
-    <ClInclude Include="SoundManager.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="StoneBlock.h" />
     <ClInclude Include="TextLabel.h" />

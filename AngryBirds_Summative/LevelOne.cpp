@@ -1,3 +1,15 @@
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2005 - 2018 Media Design School
+//
+// Author		:	Jasper Lyons
+// Email		:	Jasper.Lyo7552@mediadesign.school.nz
+// File Name	:	LevelOne.cpp
+// Description	:	LevelOne c++ file
+
 #include "LevelOne.h"
 #include "Sprite.h"
 #include "Camera.h"
@@ -195,9 +207,6 @@ void LevelOne::ProcessLevel(float _DeltaTick) {
 			m_entityVec[i]->Update(_DeltaTick);
 		}		
 	}
-
-	// Process Pulley Block
-	//m_PulleyBlock->Update();
 
 	// Process AngryBird stuff..
 	if (!m_angryBirdsVec.empty())

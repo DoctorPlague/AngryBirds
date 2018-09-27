@@ -7,8 +7,8 @@
 //
 // Author		:	Jasper Lyons
 // Email		:	Jasper.Lyo7552@mediadesign.school.nz
-// File Name	:	Input.cpp
-// Description	:	Implimentation for the Input class
+// File Name	:	KeyboardInput.cpp
+// Description	:	Implimentation for the KeyboardInput class
 
 #include "KeyboardInput.h"
 #include "Utilities.h"
@@ -213,7 +213,7 @@ void Input::MouseButton(int _button, int _state, int _x, int _y)
 //                  
 void Input::MouseInput(int _x, int _y)
 {
-	m_MousePos = glm::vec2(_x, _y);
+	m_mousePos = glm::vec2(_x, _y);
 }
 
 //Name:			    SetCursor
@@ -237,16 +237,16 @@ glm::vec2 Input::GetMousePos()
 {
 	// Converts XY to NDC and returns
 	glm::vec2 NDC = glm::vec2();
-	NDC.x = (2.0f * m_MousePos.x) / static_cast<float>(ki_SCREENWIDTH) - 1.0f;
-	NDC.y = 1.0f - (2.0f * m_MousePos.y) / static_cast<float>(ki_SCREENHEIGHT);	
+	NDC.x = (2.0f * m_mousePos.x) / static_cast<float>(ki_SCREENWIDTH) - 1.0f;
+	NDC.y = 1.0f - (2.0f * m_mousePos.y) / static_cast<float>(ki_SCREENHEIGHT);	
 	return NDC;
 }
 
 glm::vec2 Input::GetMouseWorldPos()
 {
 	//screen pos
-	glm::vec2 normalizedScreenPos = glm::vec2((2.0f * m_MousePos.x) / static_cast<float>(ki_SCREENWIDTH) - 1.0f,
-									1.0f - (2.0f * m_MousePos.y) / static_cast<float>(ki_SCREENHEIGHT));
+	glm::vec2 normalizedScreenPos = glm::vec2((2.0f * m_mousePos.x) / static_cast<float>(ki_SCREENWIDTH) - 1.0f,
+									1.0f - (2.0f * m_mousePos.y) / static_cast<float>(ki_SCREENHEIGHT));
 
 	//screenpos to Proj Space
 	glm::vec4 clipCoords = glm::vec4(normalizedScreenPos.x, normalizedScreenPos.y, -1.0f, 1.0f);

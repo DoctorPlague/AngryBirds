@@ -1,3 +1,15 @@
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2005 - 2018 Media Design School
+//
+// Author		:	Jasper Lyons
+// Email		:	Jasper.Lyo7552@mediadesign.school.nz
+// File Name	:	LevelTwo.cpp
+// Description	:	LevelTwo c++ file
+
 #include "LevelTwo.h"
 #include "Sprite.h"
 #include "Camera.h"
@@ -81,7 +93,7 @@ void LevelTwo::InitializeObjects()
 	m_slingShot->SetPosition(b2Vec2(3.0f, 3.8f));
 	m_entityVec.push_back(m_slingShot);
 
-	// RopeBlock
+	// RopeBlocks
 	std::shared_ptr<RopeBlock> TempRopeBlock;
 	TempRopeBlock = std::make_shared<RopeBlock>();
 	TempRopeBlock->SetPosition(b2Vec2(6.0f, 8.8f));
